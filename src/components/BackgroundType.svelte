@@ -26,6 +26,7 @@
     {#each cats as { id, name, url }, i}
         <a href={url} in:fade="{{ duration: 2000, delay: i * 200 }}" out:fade>
             {name}
+            a
         </a>
     {/each}
 {/if}
