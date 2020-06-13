@@ -1,10 +1,8 @@
 <script>
 	import BackgroundType from './components/BackgroundType.svelte';
-	export let name;
 </script>
 
 <main>
-<!--	TODO make some components-->
 	<div class="text-container">
 		<BackgroundType/>
 	</div>
@@ -14,15 +12,12 @@
 
 <style>
 	main {
-		/*TODO might have to change this*/
 		text-align: center;
-		/*max-width: 240px;*/
 		margin: 0 auto;
 		height: 100%;
 		overflow: hidden;
 		display: grid;
-		/*TODO make the grid gutter responsive*/
-		grid-template-columns: 100px auto auto 100px;
+		grid-template-columns: 25px auto auto 25px;
 		grid-template-rows: auto auto auto;
 	}
 
@@ -34,13 +29,16 @@
 	}
 
 	.text-container {
-		grid-area: 2 / 2 / 2 / 2;
-		/*justify-items: left;*/
+		grid-area: 2 / 2 / 2 / 4;
 	}
 
 	@media (min-width: 640px) {
 		main {
 			max-width: none;
+			grid-template-columns: 100px auto auto 100px;
+		}
+		.text-container {
+			grid-area: 2 / 2 / 2 / 2;
 		}
 	}
 </style>
