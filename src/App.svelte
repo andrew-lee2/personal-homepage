@@ -1,19 +1,24 @@
 <script>
 	import BackgroundType from './components/BackgroundType.svelte';
-	export let name;
 </script>
 
 <main>
-<!--	TODO make some components-->
-	<BackgroundType/>
+	<div class="text-container">
+		<BackgroundType/>
+	</div>
+
+
 </main>
 
 <style>
 	main {
 		text-align: center;
-		padding: 1em;
-		max-width: 240px;
 		margin: 0 auto;
+		height: 100%;
+		overflow: hidden;
+		display: grid;
+		grid-template-columns: 25px auto auto 25px;
+		grid-template-rows: auto auto auto;
 	}
 
 	h1 {
@@ -23,9 +28,17 @@
 		font-weight: 100;
 	}
 
+	.text-container {
+		grid-area: 2 / 2 / 2 / 4;
+	}
+
 	@media (min-width: 640px) {
 		main {
 			max-width: none;
+			grid-template-columns: 100px auto auto 100px;
+		}
+		.text-container {
+			grid-area: 2 / 2 / 2 / 2;
 		}
 	}
 </style>
