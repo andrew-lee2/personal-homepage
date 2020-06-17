@@ -19,7 +19,7 @@
     {#if isDone}
         <div class="logo-block" in:fade="{{ duration: 2000, delay: 500 }}" out:fade>
 <!--            TODO make a new logo that links to my about section-->
-            <a class="icon icon-al" href="https://github.com/andrew-lee2"></a>
+            <a class="icon icon-al" href="/about"></a>
             <a class="icon icon-github" href="https://github.com/andrew-lee2/"></a>
             <a class="icon icon-linkedin" href="https://www.linkedin.com/in/andrewlee10/"></a>
         </div>
@@ -36,6 +36,7 @@
     .site-text {
         display: grid;
         justify-content: center;
+        position: absolute;
     }
 
     .logo-block {
