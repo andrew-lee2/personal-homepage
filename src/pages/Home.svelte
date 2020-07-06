@@ -1,41 +1,53 @@
 <script>
     import BackgroundType from '../components/BackgroundType.svelte';
     import {clickOutside} from '../utils/clickOutside';
+    import { fade, fly } from 'svelte/transition';
     let showNav = false;
 
     function handleNavClick() {
         showNav = !showNav;
-        console.log(showNav);
     }
 </script>
 
 <main>
 <!--    TODO make own component eventually-->
-    <div class="logo-container">
-        <img
-                on:click={handleNavClick}
-                class="logo"
-                src="./static/images/logo.svg"
-                alt="logo for website"
-        />
-    </div>
+    {#if !showNav}
+        <div class="logo-container"
+             in:fade="{{ duration: 500}}"
+             out:fade="{{ duration: 300}}">
+            <img
+                    on:click={handleNavClick}
+                    class="logo"
+                    src="./static/images/logo.svg"
+                    alt="logo for website"
+            />
+        </div>
+    {/if}
 
     {#if showNav}
 <!--    TODO make a transition for this-->
-    <div use:clickOutside on:click_outside={handleNavClick} class="navbar">
-<!--        TODO idk if we want to duplicate this-->
-        <div class="navbar-container">
-            <img class="logo"
-                 src="./static/images/logo.svg"
-                 alt="logo for website"/>
-            <p class="navbar-link">
-                <a href="/about">About</a>
-            </p>
+        <div
+                use:clickOutside
+                on:click_outside={handleNavClick}
+                in:fade="{{ duration: 300}}" out:fade="{{ duration: 300}}"
+                class="navbar"
+        >
+    <!--        TODO idk if we want to duplicate this-->
+            <div class="navbar-container">
+                <img class="logo"
+                     src="./static/images/logo.svg"
+                     alt="logo for website"/>
+                <p class="navbar-link">
+                    <a href="/">Home</a>
+                </p>
+                <p class="navbar-link">
+                    <a href="/about">About</a>
+                </p>
+            </div>
         </div>
-    </div>
     {/if}
 
-    <div class="text-container" on:click={handleNavClick}>
+    <div class="text-container">
         <BackgroundType/>
     </div>
 </main>
@@ -48,7 +60,7 @@
         overflow: hidden;
         display: grid;
         grid-template-columns: 25px 33% auto auto 25px;
-        grid-template-rows: auto auto auto;
+        grid-template-rows: 25% 25% 25% 25%;
     }
 
     h1 {
@@ -62,6 +74,7 @@
         grid-area: 2 / 2 / 2 / 4;
     }
     .logo-container {
+        display: flex;
         grid-area: 1 / 1 / 1 / 1;
     }
     .logo {
@@ -69,26 +82,23 @@
         width: 45px;
     }
     .navbar {
-        grid-area: 1 / 3 / 4 / 1;
+        grid-area: 1 / 1 / 5 / 3;
         /*TODO choose different color, maybe dark grey transparent?*/
         background-color: grey;
         z-index: 2;
+        justify-items: center;
+        padding-top: 20px;
+        max-height: 100%;
     }
 
     .navbar-container {
         display: grid;
         justify-items: center;
-        padding-top: 20px;
     }
 
     .navbar-link {
-        padding: 10px;
         font-size: 18px;
         color: #FFFFFF;
-    }
-
-    .hidden {
-        display: none
     }
 
     a {
@@ -101,7 +111,7 @@
             grid-template-columns: 100px 100px auto auto 100px;
         }
         .text-container {
-            grid-area: 2 / 2 / 2 / 2;
+            grid-area: 2 / 3 / 4 / 4;
         }
     }
 </style>
