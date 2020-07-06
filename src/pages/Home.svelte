@@ -1,5 +1,6 @@
 <script>
     import BackgroundType from '../components/BackgroundType.svelte';
+    import Hoverable from '../utils/Hoverable.svelte';
     import {clickOutside} from '../utils/clickOutside';
     import { fade, fly } from 'svelte/transition';
     let showNav = false;
@@ -12,23 +13,28 @@
 <main>
 <!--    TODO make own component eventually-->
     {#if !showNav}
-        <div class="logo-container"
-             in:fade="{{ duration: 500}}"
-             out:fade="{{ duration: 300}}">
-            <img
-                    on:click={handleNavClick}
-                    class="logo"
-                    src="./static/images/logo.svg"
-                    alt="logo for website"
-            />
-        </div>
+<!--        <Hoverable let:hovering={hovering}>-->
+            <div class="logo-container"
+                 on:mouseenter={handleNavClick}
+                 in:fade="{{ duration: 500}}"
+                 out:fade="{{ duration: 300}}">
+                <img
+                        on:click={handleNavClick}
+                        class="logo"
+                        src="./static/images/logo.svg"
+                        alt="logo for website"
+                />
+            </div>
+<!--        </Hoverable>-->
     {/if}
 
     {#if showNav}
 <!--    TODO make a transition for this-->
+<!--FIXME i think only one of the mouse on on:click needs to be depending on enviroment-->
         <div
                 use:clickOutside
                 on:click_outside={handleNavClick}
+                on:mouseleave={handleNavClick}
                 in:fade="{{ duration: 300}}" out:fade="{{ duration: 300}}"
                 class="navbar"
         >
