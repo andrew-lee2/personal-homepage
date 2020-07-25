@@ -1,23 +1,30 @@
-<script>
+<script lang="ts">
     import BackgroundType from '../components/BackgroundType.svelte';
     import Hoverable from '../utils/Hoverable.svelte';
     import {clickOutside} from '../utils/clickOutside';
     import { fade, fly } from 'svelte/transition';
-    let showNav = false;
+    let showNav: boolean = false;
 
     function handleNavClick() {
         showNav = !showNav;
     }
+
+    interface FadeSettings {
+        duration: number;
+    }
+
+    let hoverFadeDur500: FadeSettings = {duration: 500};
+    let hoverFadeDur300: FadeSettings = {duration: 300};
+    // let logoInFadeDur: number = 500;
 </script>
 
 <main>
 <!--    TODO make own component eventually-->
     {#if !showNav}
-<!--        <Hoverable let:hovering={hovering}>-->
             <div class="logo-container"
                  on:mouseenter={handleNavClick}
-                 in:fade="{{ duration: 500}}"
-                 out:fade="{{ duration: 300}}">
+                 in:fade="{hoverFadeDur500}"
+                 out:fade="{hoverFadeDur300}">
                 <img
                         on:click={handleNavClick}
                         class="logo"
@@ -25,7 +32,7 @@
                         alt="logo for website"
                 />
             </div>
-<!--        </Hoverable>-->
+
     {/if}
 
     {#if showNav}
@@ -36,7 +43,7 @@
                 on:click_outside={handleNavClick}
                 on:mouseleave={handleNavClick}
                 
-                in:fade="{{ duration: 300}}" out:fade="{{ duration: 300}}"
+                in:fade="{hoverFadeDur300}" out:fade="{hoverFadeDur300}"
                 class="navbar"
         >
     <!--        TODO idk if we want to duplicate this-->

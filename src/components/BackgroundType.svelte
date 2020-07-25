@@ -1,14 +1,23 @@
-<script>
+<script lang="ts">
     import Typewriter from 'svelte-typewriter';
-    import { fade, fly } from 'svelte/transition';
+    import { fade, fly }  from 'svelte/transition';
 
     let isDone = false;
 
     function handleDone() {
       isDone = true;
     }
+
+    interface TypeSpeed {
+        duration: number,
+        delay: number,
+    }
+
+    let welcomeTypeSpeed: TypeSpeed = {duration: 2000, delay: 500}
+
 </script>
 
+<!-- svelte-ignore a11y-missing-content -->
 <div class="site-text">
     <!--TODO do we need to have another sentence?-->
     <Typewriter cascade interval={100} cursor={false} on:done={handleDone}>
@@ -17,7 +26,7 @@
 
 <!--    TODO dont make this a list let it fade in one at a time?-->
     {#if isDone}
-        <div class="logo-block" in:fade="{{ duration: 2000, delay: 500 }}" out:fade>
+        <div class="logo-block" in:fade="{welcomeTypeSpeed}" out:fade="{welcomeTypeSpeed}">
             <a class="icon icon-github" href="https://github.com/andrew-lee2/"></a>
             <a class="icon icon-linkedin" href="https://www.linkedin.com/in/andrewlee10/"></a>
         </div>
