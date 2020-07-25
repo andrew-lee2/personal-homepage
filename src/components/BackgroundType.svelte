@@ -18,8 +18,6 @@
 <!--    TODO dont make this a list let it fade in one at a time?-->
     {#if isDone}
         <div class="logo-block" in:fade="{{ duration: 2000, delay: 500 }}" out:fade>
-<!--            TODO make a new logo that links to my about section-->
-            <a class="icon icon-al" href="/about"></a>
             <a class="icon icon-github" href="https://github.com/andrew-lee2/"></a>
             <a class="icon icon-linkedin" href="https://www.linkedin.com/in/andrewlee10/"></a>
         </div>
@@ -41,9 +39,9 @@
 
     .logo-block {
         display: flex;
-        justify-content: space-around;
+        justify-content: flex-end;
         /*TODO change to rem*/
-        width: 200px;
+        width: 90%;
     }
 
     .icon {
@@ -51,6 +49,7 @@
         width: 30px;
         height: 30px;
         background-size: cover;
+        margin-left: 20px
     }
 
     .icon-al {
@@ -82,7 +81,7 @@
         }
 
         .logo-block {
-            justify-content: space-between;
+            justify-content: flex-end;
         }
         .icon {
             width: 40px;
