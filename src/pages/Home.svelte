@@ -35,6 +35,7 @@
                 use:clickOutside
                 on:click_outside={handleNavClick}
                 on:mouseleave={handleNavClick}
+                
                 in:fade="{{ duration: 300}}" out:fade="{{ duration: 300}}"
                 class="navbar"
         >
