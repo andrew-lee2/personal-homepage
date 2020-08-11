@@ -1,6 +1,7 @@
 <script lang="ts">
     import {clickOutside} from '../utils/clickOutside';
     import { fade, fly } from 'svelte/transition';
+    import NavbarLinks from '../components/NavbarLinks.svelte';
 
     let showNav: boolean = false;
     
@@ -50,12 +51,7 @@
             <img class="logo"
                 src="./static/images/logo.svg"
                 alt="logo for website"/>
-            <p class="navbar-link">
-                <a href="/">Home</a>
-            </p>
-            <p class="navbar-link">
-                <a href="/about">About</a>
-            </p>
+            <NavbarLinks/>
         </div>
     </div>
 {/if}
@@ -83,15 +79,4 @@
         display: grid;
         justify-items: center;
     }
-
-    .navbar-link {
-        font-size: 18px;
-        color: #FFFFFF;
-    }
-    a {
-        color: inherit;
-        text-decoration: none;
-    }
-
-
 </style>
