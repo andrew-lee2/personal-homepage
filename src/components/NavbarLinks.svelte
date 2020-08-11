@@ -15,7 +15,9 @@
     <a href="/projects">Projects</a>
 </p>
 
-<style>
+<style type="text/scss">
+    @import '../styles/vars';
+    
     .navbar-link {
         font-size: 18px;
         color: #FFFFFF;
@@ -24,4 +26,12 @@
         color: inherit;
         text-decoration: none;
     }
+
+    p {
+    background: $color;
+
+    > a {
+      color: pink;
+    }
+  }
 </style>
