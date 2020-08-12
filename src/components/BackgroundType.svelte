@@ -2,6 +2,7 @@
     import Typewriter from 'svelte-typewriter';
     import { fade, fly }  from 'svelte/transition';
     import SocialLinks from '../components/SocialLinks.svelte'
+    import Logo from '../components/Logo.svelte';
 
     let isDone = false;
 
@@ -18,6 +19,8 @@
 
 </script>
 
+<!-- svelte-ignore css-unused-selector -->
+<!-- svelte-ignore css-unused-selector -->
 <!-- svelte-ignore a11y-missing-content -->
 <div class="site-text">
     {#if !isDone}
@@ -26,10 +29,13 @@
             <h1>Welcome!</h1>
         </Typewriter>
     {:else}
-        <h1>Andrew Lee</h1>
+    <div class="name-logo-container">
+        <Logo class="logo-item"/>
+        <h2 class="name-item">Andrew Lee</h2>
+    </div>
     {/if}
     
-    
+    <!-- TODO i think something else was here? -->
 </div>
 
 <style>
@@ -37,6 +43,19 @@
     h1 {
         font-size: 4.0rem;
         margin-block-end: 0;
+    }
+    
+    .name-logo-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo-item {
+        flex: 1 1 20%;
+    }
+
+    .name-item {
+        flex: 1 1 70%;
     }
 
     .site-text {
