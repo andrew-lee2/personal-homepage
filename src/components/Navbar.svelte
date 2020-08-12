@@ -2,6 +2,7 @@
     import {clickOutside} from '../utils/clickOutside';
     import { fade, fly } from 'svelte/transition';
     import NavbarLinks from '../components/NavbarLinks.svelte';
+    import Logo from '../components/Logo.svelte';
 
     let showNav: boolean = false;
     
@@ -26,12 +27,7 @@
         on:mouseenter={handleNavClick}
         in:fade="{hoverFadeDur500}"
         out:fade="{hoverFadeDur300}">
-        <img
-            on:click={handleNavClick}
-            class="logo"
-            src="./static/images/logo.svg"
-            alt="logo for website"
-        />
+        <Logo on:click={handleNavClick}/>
     </div>
 {/if}
 
@@ -48,9 +44,7 @@
     >
         <!--        TODO idk if we want to duplicate this-->
         <div class="navbar-container">
-            <img class="logo"
-                src="./static/images/logo.svg"
-                alt="logo for website"/>
+            <Logo/>
             <NavbarLinks/>
         </div>
     </div>
@@ -61,10 +55,6 @@
         display: flex;
         grid-area: 1 / 1 / 1 / 1;
     }
-    .logo {
-        height: 45px;
-        width: 45px;
-    }
     .navbar {
         grid-area: 1 / 1 / 5 / 3;
         /*TODO choose different color, maybe dark grey transparent?*/
@@ -74,7 +64,6 @@
         padding-top: 20px;
         max-height: 100%;
     }
-
     .navbar-container {
         display: grid;
         justify-items: center;

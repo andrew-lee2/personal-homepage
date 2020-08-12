@@ -20,15 +20,16 @@
 
 <!-- svelte-ignore a11y-missing-content -->
 <div class="site-text">
-    <!--TODO do we need to have another sentence?-->
-    <Typewriter cascade interval={100} cursor={false} on:done={handleDone}>
-        <h1>Welcome!</h1>
-    </Typewriter>
-
-<!--    TODO dont make this a list let it fade in one at a time?-->
-    {#if isDone}
-        <SocialLinks/>
+    {#if !isDone}
+        <!-- TODO change to 300 when everything is done -->
+        <Typewriter cascade interval={100} cursor={false} on:done={handleDone}>
+            <h1>Welcome!</h1>
+        </Typewriter>
+    {:else}
+        <h1>Andrew Lee</h1>
     {/if}
+    
+    
 </div>
 
 <style>

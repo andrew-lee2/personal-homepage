@@ -26,12 +26,4 @@
         color: inherit;
         text-decoration: none;
     }
-
-    p {
-    background: $color;
-
-    > a {
-      color: pink;
-    }
-  }
 </style>
