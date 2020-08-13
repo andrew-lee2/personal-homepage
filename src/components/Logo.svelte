@@ -1,10 +1,5 @@
-<script lang="ts">
-    let clazz: any;
-	export { clazz as class };
-</script>
-
 <img 
-    class={`logo ${clazz || ''}`}
+    class="logo"
     src="./static/images/logo.svg"
     alt="logo for website"
 />
