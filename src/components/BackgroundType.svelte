@@ -10,19 +10,8 @@
     function handleDone() {
       isDone = true;
     }
-
-    // interface TypeSpeed {
-    //     duration: number,
-    //     delay: number,
-    // }
-
-    // let welcomeTypeSpeed: TypeSpeed = {duration: 2000, delay: 500}
-
 </script>
 
-<!-- svelte-ignore css-unused-selector -->
-<!-- svelte-ignore css-unused-selector -->
-<!-- svelte-ignore a11y-missing-content -->
 <div class="site-text">
     {#if !isDone}
         <!-- TODO change to 300 when everything is done -->
@@ -33,17 +22,9 @@
     {:else}
         <div class="name-logo-container">
             <Logo/>
-            <p class="name-item">Andrew Lee</p>
+            <div class="name-item">Andrew Lee</div>
         </div>
-        
-        <!-- FIXME need to pass in different color and then have to iterate thru? -->
-        <div class="temp">
-            <NavbarLinks showHome={false} transitions={true}></NavbarLinks>
-        </div>
-
     {/if}
-    
-    <!-- TODO i think something else was here need to do the drop down? -->
 </div>
 
 <style>
@@ -52,20 +33,10 @@
         font-size: 4.0rem;
         margin-block-end: 0;
     }
-    .temp {
-        display: grid;
-        justify-items: center;
-    }
-    
     .name-logo-container {
         display: flex;
         align-items: center;
     }
-
-    .logo-item {
-        flex: 1 1 20%;
-    }
-
     .name-item {
         flex: 1 1 60%;
         font-size: 3rem;

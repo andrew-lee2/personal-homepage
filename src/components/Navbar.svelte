@@ -1,6 +1,6 @@
 <script lang="ts">
     import {clickOutside} from '../utils/clickOutside';
-    import { fade, fly } from 'svelte/transition';
+    import { fade } from 'svelte/transition';
     import NavbarLinks from '../components/NavbarLinks.svelte';
     import Logo from '../components/Logo.svelte';
 
@@ -45,7 +45,7 @@
         <!--        TODO idk if we want to duplicate this-->
         <div class="navbar-container">
             <Logo/>
-            <NavbarLinks/>
+            <NavbarLinks white/>
         </div>
     </div>
 {/if}

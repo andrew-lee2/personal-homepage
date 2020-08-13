@@ -39,6 +39,7 @@
 <style type="text/scss">
     @import '../styles/vars';
     
+    // TODO add margin back in for navbar stuff 
     .navbar-link {
         font-size: 18px;
     }
