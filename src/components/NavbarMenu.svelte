@@ -1,17 +1,20 @@
-<nav class="hidden text-gray-500 uppercase text-bold sm:block">
+<nav class="navbar-menu">
     <a href="/about" class="navbar-link">About</a>
     <a href="/contact" class="navbar-link">Contact</a>
 </nav>
 
 <!-- FIXME -->
 <style type="text/scss">
+     @import '../styles/vars';
     .navbar-menu {
-        display: none;
+        // display: none;
         color: #a0aec0;
         font-weight: bold;
         // TODO make a responsive small block
-        // display: block;
-        
+        display: none;    
+        @media screen and (min-width: $small){
+            display: block;
+        }        
     }
 
     .navbar-link {
