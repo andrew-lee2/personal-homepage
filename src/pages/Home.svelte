@@ -1,101 +1,46 @@
-<script>
+<script lang="ts">
     // import BackgroundType from '../components/BackgroundType.svelte';
     // import Hoverable from '../utils/Hoverable.svelte';
     // import {clickOutside} from '../utils/clickOutside';
     // import { fade, fly } from 'svelte/transition';
     // import Navbar from '../components/Navbar.svelte';
+    import NavbarDesktop from '../components/NavbarDesktop.svelte';
+	import NavbarSidebar from '../components/NavbarSidebar.svelte';
     import { onMount } from 'svelte';
+    import { TextScramble } from '../utils/textScramble';
     
-    class TextScramble {
-        constructor(el) {
-            this.el = el
-            this.chars = '!<>-_\\/[]{}—=+*^?#________'
-            this.update = this.update.bind(this)
-        }
-        setText(newText) {
-            const oldText = this.el.innerText
-            console.log(newText);
-            console.log(oldText);
-            const length = Math.max(oldText.length, newText.length)
-            const promise = new Promise((resolve) => this.resolve = resolve)
-            this.queue = []
-            for (let i = 0; i < length; i++) {
-                const from = oldText[i] || ''
-                const to = newText[i] || ''
-                const start = Math.floor(Math.random() * 40)
-                const end = start + Math.floor(Math.random() * 40)
-                this.queue.push({ from, to, start, end })
-            }
-            cancelAnimationFrame(this.frameRequest)
-            this.frame = 0
-            this.update()
-            return promise
-        }
-        update() {
-            let output = ''
-            let complete = 0
-            for (let i = 0, n = this.queue.length; i < n; i++) {
-                let { from, to, start, end, char } = this.queue[i]
-                if (this.frame >= end) {
-                    complete++
-                    output += to
-                } else if (this.frame >= start) {
-                    if (!char || Math.random() < 0.28) {
-                        char = this.randomChar()
-                        this.queue[i].char = char
-                    }
-                    output += `<span class="dud">${char}</span>`
-                } else {
-                    output += from
-                }
-            }
-            this.el.innerHTML = output
-            if (complete === this.queue.length) {
-                this.resolve()
-            } else {
-                this.frameRequest = requestAnimationFrame(this.update)
-                this.frame++
-            }
-        }
-        randomChar() {
-            return this.chars[Math.floor(Math.random() * this.chars.length)]
-        }
-    }
-    
-    
-    const phrases = [
-    'Hey,',
-    'put here all the sentences',
-    'that you want to cycle',
-    'they will all be automatically displayed.',
-    'Just',
-    'Like',
-    'This.',
-    'Have fun :)'
+    const phrases: string[] = [
+        'Hello!',
+        'Welcome to my site!',
+        'Please take a look around!',
+        '- Andrew',
     ]
     
-    // const el = document.querySelector('.text')
-    let el;
-    console.log(el);
+    let textElement: any;
     onMount(() => { 
-        const fx = new TextScramble(el)
+        const fx = new TextScramble(textElement)
     
         let counter = 0;
         const next = () => {
             fx.setText(phrases[counter]).then(() => {
-                setTimeout(next, 800)
+                // this will increase the phrase pause
+                setTimeout(next, 1200)
             })
             counter = (counter + 1) % phrases.length
         }
         
         next()
     });
+
+    let open: boolean = false;
 </script>
+
+<NavbarSidebar bind:open/>
+<NavbarDesktop bind:sidebar={open}/>
 
 <main>
     <div class="container">
-        <!-- <div class="text"></div> -->
-        <div bind:this="{el}" class="text"></div>
+        <div bind:this="{textElement}" class="text"></div>
     </div>
 </main>
 
@@ -105,7 +50,7 @@
     html,
     body {
         font-family: 'Roboto Mono', monospace;
-        background: #212121;
+        background: #FFFFFF;
         height: 100%;
     }
     .container {
@@ -118,17 +63,17 @@
     .text {
         font-weight: 100;
         font-size: 28px;
-        color: #fafafa;
+        color: #757575;
+        // color: #fafafa;
     }
     .dud {
-        color: #757575;
+        // color: #757575;
+        color: #fafafa;
     }
 
     main {
-        background-color: #000000;
+        background-color: #FFFFFF;
         height: 100%;
         width: 100%;
     }
-    
-    
 </style>

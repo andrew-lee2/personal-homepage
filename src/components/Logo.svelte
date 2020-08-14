@@ -1,12 +1,9 @@
-<img 
-    class="logo"
-    src="./static/images/logo.svg"
-    alt="logo for website"
-/>
+<svg width=auto height=30>
+	<text x=0 y=20>Andrew Lee</text>
+</svg>
 
 <style>
-    .logo {
-        height: 45px;
-        width: 45px;
-    }
+	text {
+		fill: currentColor
+	}
 </style>

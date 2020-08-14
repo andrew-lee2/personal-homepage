@@ -14,3 +14,9 @@
 		<Route path="projects" component="{Projects}" />
 	</div>
 </Router>
+
+<style>
+	:global(body) {
+		padding: 0;
+	}
+</style>
