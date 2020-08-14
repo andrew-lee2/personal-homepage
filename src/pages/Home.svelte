@@ -1,39 +1,134 @@
-<script lang="ts">
-    import BackgroundType from '../components/BackgroundType.svelte';
-    import Hoverable from '../utils/Hoverable.svelte';
-    import {clickOutside} from '../utils/clickOutside';
-    import { fade, fly } from 'svelte/transition';
-    import Navbar from '../components/Navbar.svelte';
+<script>
+    // import BackgroundType from '../components/BackgroundType.svelte';
+    // import Hoverable from '../utils/Hoverable.svelte';
+    // import {clickOutside} from '../utils/clickOutside';
+    // import { fade, fly } from 'svelte/transition';
+    // import Navbar from '../components/Navbar.svelte';
+    import { onMount } from 'svelte';
+    
+    class TextScramble {
+        constructor(el) {
+            this.el = el
+            this.chars = '!<>-_\\/[]{}—=+*^?#________'
+            this.update = this.update.bind(this)
+        }
+        setText(newText) {
+            const oldText = this.el.innerText
+            console.log(newText);
+            console.log(oldText);
+            const length = Math.max(oldText.length, newText.length)
+            const promise = new Promise((resolve) => this.resolve = resolve)
+            this.queue = []
+            for (let i = 0; i < length; i++) {
+                const from = oldText[i] || ''
+                const to = newText[i] || ''
+                const start = Math.floor(Math.random() * 40)
+                const end = start + Math.floor(Math.random() * 40)
+                this.queue.push({ from, to, start, end })
+            }
+            cancelAnimationFrame(this.frameRequest)
+            this.frame = 0
+            this.update()
+            return promise
+        }
+        update() {
+            let output = ''
+            let complete = 0
+            for (let i = 0, n = this.queue.length; i < n; i++) {
+                let { from, to, start, end, char } = this.queue[i]
+                if (this.frame >= end) {
+                    complete++
+                    output += to
+                } else if (this.frame >= start) {
+                    if (!char || Math.random() < 0.28) {
+                        char = this.randomChar()
+                        this.queue[i].char = char
+                    }
+                    output += `<span class="dud">${char}</span>`
+                } else {
+                    output += from
+                }
+            }
+            this.el.innerHTML = output
+            if (complete === this.queue.length) {
+                this.resolve()
+            } else {
+                this.frameRequest = requestAnimationFrame(this.update)
+                this.frame++
+            }
+        }
+        randomChar() {
+            return this.chars[Math.floor(Math.random() * this.chars.length)]
+        }
+    }
+    
+    
+    const phrases = [
+    'Hey,',
+    'put here all the sentences',
+    'that you want to cycle',
+    'they will all be automatically displayed.',
+    'Just',
+    'Like',
+    'This.',
+    'Have fun :)'
+    ]
+    
+    // const el = document.querySelector('.text')
+    let el;
+    console.log(el);
+    onMount(() => { 
+        const fx = new TextScramble(el)
+    
+        let counter = 0;
+        const next = () => {
+            fx.setText(phrases[counter]).then(() => {
+                setTimeout(next, 800)
+            })
+            counter = (counter + 1) % phrases.length
+        }
+        
+        next()
+    });
 </script>
 
 <main>
-    <Navbar/>
-
-    <div class="text-container">
-        <BackgroundType/>
+    <div class="container">
+        <!-- <div class="text"></div> -->
+        <div bind:this="{el}" class="text"></div>
     </div>
 </main>
 
-<style>
-    main {
-        text-align: center;
-        margin: 0 auto;
+
+<style type="text/scss">
+    @import 'https://fonts.googleapis.com/css?family=Roboto+Mono:100';
+    html,
+    body {
+        font-family: 'Roboto Mono', monospace;
+        background: #212121;
         height: 100%;
-        overflow: hidden;
-        display: grid;
-        grid-template-columns: 25px 33% auto auto 25px;
-        grid-template-rows: 25% 25% 25% 25%;
     }
-    .text-container {
-        grid-area: 2 / 2 / 2 / 4;
+    .container {
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    .text {
+        font-weight: 100;
+        font-size: 28px;
+        color: #fafafa;
+    }
+    .dud {
+        color: #757575;
     }
 
-    @media (min-width: 640px) {
-        main {
-            grid-template-columns: 100px 100px auto auto 100px;
-        }
-        .text-container {
-            grid-area: 2 / 3 / 4 / 4;
-        }
+    main {
+        background-color: #000000;
+        height: 100%;
+        width: 100%;
     }
+    
+    
 </style>
