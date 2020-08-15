@@ -12,7 +12,7 @@
 <style type="text/scss">
     .sidebar-container {
         position: absolute;
-        width: 100%;
+        width: 50%;
         height: 100%;
         background-color: #edf2f7;
         border-right-width: 2px;

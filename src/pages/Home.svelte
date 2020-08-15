@@ -4,8 +4,8 @@
     // import {clickOutside} from '../utils/clickOutside';
     // import { fade, fly } from 'svelte/transition';
     // import Navbar from '../components/Navbar.svelte';
-    import NavbarDesktop from '../components/NavbarDesktop.svelte';
-	import NavbarSidebar from '../components/NavbarSidebar.svelte';
+    import Navbar from '../components/Navbar.svelte';
+	import Sidebar from '../components/Sidebar.svelte';
     import { onMount } from 'svelte';
     import { TextScramble } from '../utils/textScramble';
     
@@ -35,8 +35,8 @@
     let open: boolean = false;
 </script>
 
-<NavbarSidebar bind:open/>
-<NavbarDesktop bind:sidebar={open}/>
+<Sidebar bind:open/>
+<Navbar bind:sidebar={open}/>
 
 <main>
     <div class="container">
