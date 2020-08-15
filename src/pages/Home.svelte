@@ -1,9 +1,4 @@
 <script lang="ts">
-    // import BackgroundType from '../components/BackgroundType.svelte';
-    // import Hoverable from '../utils/Hoverable.svelte';
-    // import {clickOutside} from '../utils/clickOutside';
-    // import { fade, fly } from 'svelte/transition';
-    // import Navbar from '../components/Navbar.svelte';
     import Navbar from '../components/Navbar.svelte';
 	import Sidebar from '../components/Sidebar.svelte';
     import { onMount } from 'svelte';
