@@ -1,39 +1,79 @@
 <script lang="ts">
-    import BackgroundType from '../components/BackgroundType.svelte';
-    import Hoverable from '../utils/Hoverable.svelte';
-    import {clickOutside} from '../utils/clickOutside';
-    import { fade, fly } from 'svelte/transition';
+    // import BackgroundType from '../components/BackgroundType.svelte';
+    // import Hoverable from '../utils/Hoverable.svelte';
+    // import {clickOutside} from '../utils/clickOutside';
+    // import { fade, fly } from 'svelte/transition';
+    // import Navbar from '../components/Navbar.svelte';
     import Navbar from '../components/Navbar.svelte';
+	import Sidebar from '../components/Sidebar.svelte';
+    import { onMount } from 'svelte';
+    import { TextScramble } from '../utils/textScramble';
+    
+    const phrases: string[] = [
+        'Hello!',
+        'Welcome to my site!',
+        'Please take a look around!',
+        '- Andrew',
+    ]
+    
+    let textElement: any;
+    onMount(() => { 
+        const fx = new TextScramble(textElement)
+    
+        let counter = 0;
+        const next = () => {
+            fx.setText(phrases[counter]).then(() => {
+                // this will increase the phrase pause
+                setTimeout(next, 1200)
+            })
+            counter = (counter + 1) % phrases.length
+        }
+        
+        next()
+    });
+
+    let open: boolean = false;
 </script>
 
-<main>
-    <Navbar/>
+<Sidebar bind:open/>
+<Navbar bind:sidebar={open}/>
 
-    <div class="text-container">
-        <BackgroundType/>
+<main>
+    <div class="container">
+        <div bind:this="{textElement}" class="text"></div>
     </div>
 </main>
 
-<style>
-    main {
-        text-align: center;
-        margin: 0 auto;
+
+<style type="text/scss">
+    @import 'https://fonts.googleapis.com/css?family=Roboto+Mono:100';
+    html,
+    body {
+        font-family: 'Roboto Mono', monospace;
+        background: #FFFFFF;
         height: 100%;
-        overflow: hidden;
-        display: grid;
-        grid-template-columns: 25px 33% auto auto 25px;
-        grid-template-rows: 25% 25% 25% 25%;
     }
-    .text-container {
-        grid-area: 2 / 2 / 2 / 4;
+    .container {
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    .text {
+        font-weight: 100;
+        font-size: 28px;
+        color: #757575;
+        // color: #fafafa;
+    }
+    .dud {
+        // color: #757575;
+        color: #fafafa;
     }
 
-    @media (min-width: 640px) {
-        main {
-            grid-template-columns: 100px 100px auto auto 100px;
-        }
-        .text-container {
-            grid-area: 2 / 3 / 4 / 4;
-        }
+    main {
+        background-color: #FFFFFF;
+        height: 100%;
+        width: 100%;
     }
 </style>

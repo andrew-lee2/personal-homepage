@@ -9,6 +9,7 @@
         name: string;
         route: string;
     }
+    // https://github.com/alm-tools/alm/blob/master/src/common/types.ts
     interface NavbarLinks extends Array<NavbarLink>{}
 
     let navbarLinks: NavbarLinks = [
