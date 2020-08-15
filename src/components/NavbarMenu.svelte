@@ -1,26 +1,40 @@
+<script lang="ts">
+    let route: string = window.location.pathname;
+</script>
+
 <nav class="navbar-menu">
-    <a href="/about" class="navbar-link">About</a>
-    <a href="/contact" class="navbar-link">Contact</a>
+    <a href="/" class="navbar-link" class:current-site="{route === '/'}">Home</a>
+    <a href="/about" class="navbar-link" class:current-site="{route === '/about'}">About</a>
+    <a href="/projects" class="navbar-link" class:current-site="{route === '/projects'}">Projects</a>
 </nav>
 
-<!-- FIXME -->
 <style type="text/scss">
      @import '../styles/vars';
     .navbar-menu {
-        // display: none;
         color: #a0aec0;
-        font-weight: bold;
-        // TODO make a responsive small block
         display: none;    
         @media screen and (min-width: $small){
-            display: block;
+            display: flex;
+            height: 100%;
+            align-items: center;
+            
         }        
     }
 
     .navbar-link {
         &:hover {
             color: #4a5568;
-            // TODO need to style the underline
         }
+    }
+    a {
+        margin-right: 2rem;
+        text-decoration: none;
+        padding-bottom: .25em;
+        &:hover {
+            box-shadow: inset 0 -0.2em red;
+        }
+    }
+    .current-site {
+        box-shadow: inset 0 -0.2em pink;
     }
 </style>

@@ -15,10 +15,13 @@
         color: #a0aec0;
         cursor: pointer;
         margin-right: 1rem;
+		margin-bottom: 0;
         border-style: none;
+		display: flex;
+		align-items: center;
 
         &:hover {
-            color: 4a5568;
+            color: #4a5568;
         }
         &:focus {
             outline: 0;
@@ -52,7 +55,7 @@
 		opacity: 0;
 	}
 	
-  .open #bottom {
+  	.open #bottom {
 		transform: translate(-12px, 9px) rotate(-45deg)
 	}
 </style>

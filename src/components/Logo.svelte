@@ -1,9 +1,16 @@
-<svg width=auto height=30>
-	<text x=0 y=20>Andrew Lee</text>
-</svg>
+<div class="temp">
+	<svg width=auto height=30>
+		<text x=0 y=22>Andrew Lee</text>
+	</svg>
+</div>
 
 <style>
 	text {
-		fill: currentColor
+		fill: currentColor;
+		font-size: 1.5rem;
+	}
+	.temp {
+		display: flex;
+		align-items: center;
 	}
 </style>
