@@ -24,9 +24,10 @@
         padding: 0.5rem;
         border-bottom-width: 2px;
         height: 2.5rem;
-        position: fixed;
-        width: 100%;
-        top: 0;
+        // TODO sidebar breaks if we fix it 
+        // position: fixed;
+        // width: 100%;
+        // top: 0;
     }
 
     .flex {

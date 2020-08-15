@@ -1,6 +1,5 @@
 <script lang="ts">
     let route: string = window.location.pathname;
-
 </script>
 
 <nav class="navbar-menu">

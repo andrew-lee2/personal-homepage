@@ -30,22 +30,32 @@
     let open: boolean = false;
 </script>
 
-<Sidebar bind:open/>
-<Navbar bind:sidebar={open}/>
-
-<main>
-    <div class="container">
-        <div bind:this="{textElement}" class="text"></div>
-    </div>
-</main>
+<div class="fix-home">
+    <Sidebar bind:open/>
+    <Navbar bind:sidebar={open}/>
+    
+    <main>
+        <div class="container">
+            <div bind:this="{textElement}" class="text"></div>
+        </div>
+    </main>
+</div>
 
 
 <style type="text/scss">
-    @import 'https://fonts.googleapis.com/css?family=Roboto+Mono:100';
-    html,
-    body {
-        font-family: 'Roboto Mono', monospace;
-        background: #FFFFFF;
+    @import '../styles/vars';
+    // @import 'https://fonts.googleapis.com/css?family=Roboto+Mono:100';
+    // html,
+    // body {
+    //     font-family: 'Roboto Mono', monospace;
+    //     background: #FFFFFF;    
+    //     position: fixed;
+    // }
+
+    // TODO this should be temporary til we fix sidebar
+    .fix-home {
+        position: fixed;
+        width: 100%;
         height: 100%;
     }
     .container {
@@ -57,9 +67,14 @@
     }
     .text {
         font-weight: 100;
-        font-size: 28px;
+        font-size: 2rem;
         color: #757575;
         // color: #fafafa;
+        padding: 0 2rem;
+        margin-bottom: 15rem;
+        @media screen and (min-width: $small){
+            font-size: 3rem;
+        }
     }
     .dud {
         // color: #757575;

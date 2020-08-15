@@ -1,15 +1,21 @@
-<script>
-	export let open = false
+<script lang="ts">
+    export let open: boolean = false;
+    let route: string = window.location.pathname;
 </script>
 
 <aside class="sidebar-container" class:open>
 	<nav class="sidebar-nav">
-		<a class="block" href="#about">About</a>
-		<a class="block" href="#contact">Contact</a>
+        <ul>
+            <li><a class="sidebar-link" class:current-site="{route === '/'}" href="/">Home</a></li>
+            <li><a class="sidebar-link" class:current-site="{route === '/about'}" href="/about">About</a></li>
+            <li><a class="sidebar-link" class:current-site="{route === '/project'}" href="/projects">Projects</a></li>
+        </ul>
 	</nav>
 </aside>
 
 <style type="text/scss">
+    @import '../styles/vars';
+
     .sidebar-container {
         position: absolute;
         width: 50%;
@@ -17,10 +23,15 @@
         background-color: #edf2f7;
         border-right-width: 2px;
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        z-index: 10;
+        @media screen and (min-width: $small){
+            width: 15%;
+        }
     }
     .sidebar-nav {
         padding: 3rem;
         font-size: 1.25rem;
+        // display: inline-flex;
     }
 
 	aside {
@@ -31,7 +42,23 @@
 	.open {
 		left: 0
 	}
-    .block {
-        display: block;
+    .sidebar-link {
+        display: inline-flex;
+        text-decoration: none;
+        padding-bottom: .25em;
+        margin: 0.5rem 0;
+        &:hover {
+            box-shadow: inset 0 -0.2em red;
+        }
+    }
+
+    .current-site {
+        box-shadow: inset 0 -0.2em pink;
+    }
+    ul {
+        padding: 0;
+    }
+    li {
+        list-style: none;
     }
 </style>
