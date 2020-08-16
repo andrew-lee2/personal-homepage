@@ -1,9 +1,12 @@
-<script>
+<script lang="ts">
 	import Logo from '../components/Logo.svelte';
 	import Hamburger from '../components/Hamburger.svelte';
-	import NavbarMenu from '../components/NavbarMenu.svelte';
+    import NavbarMenu from '../components/NavbarMenu.svelte';
+    import ToggleSwitch from '../components/ToggleSwitch.svelte';
 	
-	export let sidebar = false
+    export let sidebar: Boolean = false;
+    // let darkMode: Boolean = false;
+    // console.log(darkMode);
 </script>
 
 <header class="flex navbar-header">
@@ -12,7 +15,8 @@
 		<Logo/>	
 	</nav>
 	
-	<NavbarMenu/>
+    <NavbarMenu/>
+    <ToggleSwitch></ToggleSwitch>
 </header>
 
 <style type="text/scss">

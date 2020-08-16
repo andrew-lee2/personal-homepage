@@ -12,7 +12,8 @@
      @import '../styles/vars';
     .navbar-menu {
         color: #a0aec0;
-        display: none;    
+        display: none;
+        margin-left: auto;
         @media screen and (min-width: $small){
             display: flex;
             height: 100%;
