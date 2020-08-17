@@ -1,19 +1,30 @@
 <script lang="ts">
-    let darkMode: Boolean = false;
+    let darkMode: boolean = false;
 
     function toggleDarkMode(): void {
-      darkMode = !darkMode;
+      // darkMode = !darkMode;
       window.document.body.classList.toggle('dark-mode')
+    }
+
+    $: if(darkMode) {
+      darkMode = !darkMode;
+      toggleDarkMode();
     }
 </script>
   
-<style>
+<style type="text/scss">
     .switch {
       position: relative;
       display: inline-block;
       width: 60px;
       height: 34px;
       margin-right: 1.5rem;
+      
+      &:before {
+        content: '\01F319';
+        height: 100%;
+        width: 100%;
+      }
     }
   
     .switch input {
@@ -47,6 +58,10 @@
       transition: 0.4s;
       border-radius: 50%;
     }
+    .slide:after {
+      content: '\01F319';
+      z-index: 20;
+    }
   
     input:checked + .slider {
       background-color: #2196f3;
@@ -64,6 +79,7 @@
 </style>
   
 <label class="switch">
-    <input type="checkbox" on:change={toggleDarkMode}/>
+    <!-- <input type="checkbox" on:change={toggleDarkMode}/> -->
+    <input type="checkbox" bind:checked={darkMode}/>
     <span class="slider" />
 </label>
