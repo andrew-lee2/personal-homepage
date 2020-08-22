@@ -20,7 +20,7 @@
         position: absolute;
         width: 50%;
         height: 100%;
-        background-color: #edf2f7;
+        background-color: $primary-base;
         border-right-width: 2px;
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         z-index: 10;
@@ -31,7 +31,6 @@
     .sidebar-nav {
         padding: 3rem;
         font-size: 1.25rem;
-        // display: inline-flex;
     }
 
 	aside {
@@ -47,18 +46,30 @@
         text-decoration: none;
         padding-bottom: .25em;
         margin: 0.5rem 0;
+        color: $primary-text-color;
         &:hover {
-            box-shadow: inset 0 -0.2em red;
+            box-shadow: inset 0 -0.2em $primary-highlight;
+            // TODO get a color for this
+            color: #4a5568;
         }
     }
 
     .current-site {
-        box-shadow: inset 0 -0.2em pink;
+        box-shadow: inset 0 -0.2em $primary-highlight;
     }
     ul {
         padding: 0;
     }
     li {
         list-style: none;
+    }
+
+    :global(body.dark-mode)  {
+        & .sidebar-container {
+            background-color: $dark-base-dark-grey;
+        }
+        & .sidebar-link {
+            color: $dark-text-color;
+        }
     }
 </style>

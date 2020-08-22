@@ -44,13 +44,7 @@
 
 <style type="text/scss">
     @import '../styles/vars';
-    // @import 'https://fonts.googleapis.com/css?family=Roboto+Mono:100';
-    // html,
-    // body {
-    //     font-family: 'Roboto Mono', monospace;
-    //     background: #FFFFFF;    
-    //     position: fixed;
-    // }
+    // TODO look at using a different font-family?
 
     // TODO this should be temporary til we fix sidebar
     .fix-home {
@@ -68,29 +62,32 @@
     .text {
         font-weight: 100;
         font-size: 2rem;
-        color: #fafafa;
+        color: $primary-text-color;
         padding: 0 2rem;
         @media screen and (min-width: $small){
             font-size: 3rem;
         }
     }
-    .dud {
-        color: #757575;
-    }
+    // TODO do we need this?
+    // .dud {
+    //     color: pink;
+    // }
 
     main {
-        // background-color: #FFFFFF;
         height: 100%;
         width: 100%;
-        background-color: #f2eee2;
-		color: #0084f6;
+        background-color: $primary-base;
+        // TODO make this a variable?
 		transition: background-color 0.3s;
     }
 
 	:global(body.dark-mode)  {
         & main {
-		    background-color: #1d3040;
+		    background-color: $dark-base-dark-grey;
 		    color: #bfc2c7;
+        }
+        & .text {
+            color: $dark-text-color;
         }
 	}
 </style>
