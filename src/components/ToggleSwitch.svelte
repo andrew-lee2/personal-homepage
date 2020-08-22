@@ -6,10 +6,14 @@
   
 <style type="text/scss">
   // TODO mess with this to change the size
-  $d: 1.5em;
-  $p: .5em;
-  $g: .25em;
+  $d: 1.25em;
+  $p: .25em;
+  $g: .1em;
   
+  .toggle-container {
+    margin-right: 1.5rem;
+  }
+
   // https://codepen.io/thebabydino/pen/JqzxVO
   body {
     display: grid;
@@ -32,6 +36,7 @@
       overflow: hidden;
       padding: $p;
       height: $d;
+      width: 3em;
       border-radius: .5*$d + $p;
       background: hsl(199, 98%, calc(var(--j)*48%));
       color: transparent;
@@ -46,9 +51,9 @@
       }
       
       &:before {
-        transform-origin: 20%	20%;
+        transform-origin: 10%	0;
         transform: translate(calc(var(--i)*(100% + #{$g}))) 
-        scale(calc(1 - var(--i)*.7));
+        scale(calc(1 - var(--i)*.4));
         background: hsl(60, 100%, 50%);
         // @include star(10, .75)
         // content: '\01F321';
@@ -71,7 +76,7 @@
   }
 </style>
 
-<div>
+<div class='toggle-container'>
   <input type='checkbox' id='time' on:change={toggleDarkMode}/>
   <label for='time'>Night</label>
 </div>
