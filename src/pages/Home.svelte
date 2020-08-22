@@ -59,29 +59,23 @@
         height: 100%;
     }
     .container {
-        height: 100%;
+        height: 65%;
         width: 100%;
         justify-content: center;
         align-items: center;
         display: flex;
     }
-    // FIXME need to have another way than margin-bottom to shift the text upwards
     .text {
         font-weight: 100;
         font-size: 2rem;
-        // color: #757575;
-        // color: var(--text-color);
         color: #fafafa;
         padding: 0 2rem;
-        margin-bottom: 15rem;
         @media screen and (min-width: $small){
             font-size: 3rem;
         }
     }
     .dud {
         color: #757575;
-        // color: #fafafa;
-        // color: var(--text-color);
     }
 
     main {
@@ -90,11 +84,13 @@
         width: 100%;
         background-color: #f2eee2;
 		color: #0084f6;
-		transition: background-color 0.3s
+		transition: background-color 0.3s;
     }
 
-	:global(body.dark-mode) main {
-		background-color: #1d3040;
-		color: #bfc2c7;
+	:global(body.dark-mode)  {
+        & main {
+		    background-color: #1d3040;
+		    color: #bfc2c7;
+        }
 	}
 </style>

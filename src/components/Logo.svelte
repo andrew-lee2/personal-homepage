@@ -1,4 +1,4 @@
-<div class="temp">
+<div class="logo-container">
 	<svg width=auto height=30>
 		<text x=0 y=22>Andrew Lee</text>
 	</svg>
@@ -9,7 +9,7 @@
 		fill: currentColor;
 		font-size: 1.5rem;
 	}
-	.temp {
+	.logo-container {
 		display: flex;
 		align-items: center;
 	}

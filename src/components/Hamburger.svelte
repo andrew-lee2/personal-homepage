@@ -19,6 +19,8 @@
         border-style: none;
 		display: flex;
 		align-items: center;
+		border: 0.125rem solid;
+		border-color: pink;
 
         &:hover {
             color: #4a5568;
