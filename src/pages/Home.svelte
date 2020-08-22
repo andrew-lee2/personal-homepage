@@ -65,6 +65,7 @@
         align-items: center;
         display: flex;
     }
+    // FIXME need to have another way than margin-bottom to shift the text upwards
     .text {
         font-weight: 100;
         font-size: 2rem;
@@ -92,11 +93,6 @@
 		transition: background-color 0.3s
     }
 
-    // :global(body) {
-	// 	background-color: #f2eee2;
-	// 	color: #0084f6;
-	// 	transition: background-color 0.3s
-	// }
 	:global(body.dark-mode) main {
 		background-color: #1d3040;
 		color: #bfc2c7;

@@ -3,10 +3,10 @@
 </script>
 
 <button class="hamburger" class:open on:click={() => open = !open}>
-	<svg width=32 height=24>
-		<line id="top" x1=0 y1=2  x2=32 y2=2/>
-		<line id="middle" x1=0 y1=12 x2=24 y2=12/>
-		<line id="bottom" x1=0 y1=22 x2=32 y2=22/>
+	<svg width=24 height=24>
+		<line id="left-a" x1=12 y1=2 x2=5 y2=22/>
+		<line id="middle-slash" x1=7 y1=15 x2=17 y2=15/>
+		<line id="right-a" x1=12 y1=2 x2=19 y2=22/>
 	</svg>
 </button>
 
@@ -43,19 +43,15 @@
 		z-index: 20;
 	}
 	
-	.open svg {
-		transform: scale(0.7)
+	.open #left-a {
+		transform: translate(10px, -3px) rotate(25deg)
 	}
 	
-	.open #top {
-		transform: translate(6px, 0px) rotate(45deg)
-	}
-	
-	.open #middle {
+	.open #middle-slash {
 		opacity: 0;
 	}
 	
-  	.open #bottom {
-		transform: translate(-12px, 9px) rotate(-45deg)
+  	.open #right-a {
+		transform: translate(-7px, 7px) rotate(-25deg)
 	}
 </style>
