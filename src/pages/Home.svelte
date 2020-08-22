@@ -68,8 +68,9 @@
     .text {
         font-weight: 100;
         font-size: 2rem;
-        color: #757575;
-        // color: #fafafa;
+        // color: #757575;
+        // color: var(--text-color);
+        color: #fafafa;
         padding: 0 2rem;
         margin-bottom: 15rem;
         @media screen and (min-width: $small){
@@ -77,13 +78,27 @@
         }
     }
     .dud {
-        // color: #757575;
-        color: #fafafa;
+        color: #757575;
+        // color: #fafafa;
+        // color: var(--text-color);
     }
 
     main {
-        background-color: #FFFFFF;
+        // background-color: #FFFFFF;
         height: 100%;
         width: 100%;
+        background-color: #f2eee2;
+		color: #0084f6;
+		transition: background-color 0.3s
     }
+
+    // :global(body) {
+	// 	background-color: #f2eee2;
+	// 	color: #0084f6;
+	// 	transition: background-color 0.3s
+	// }
+	:global(body.dark-mode) main {
+		background-color: #1d3040;
+		color: #bfc2c7;
+	}
 </style>
