@@ -23,6 +23,7 @@
 		align-items: center;
 		border: 0.125rem solid;
 		border-color: $primary-text-color;
+		background-color: $primary-base;
 		
 
         &:hover {
@@ -32,18 +33,17 @@
         &:focus {
             outline: 0;
         }
-		// TODO remove border if open?
     }
 
 	svg {
 		min-height: 24px;
-		transition: transform 0.3s ease-in-out;
+		transition: $standard-transition;
 	}
 	
 	svg line {
 		stroke: currentColor;
 		stroke-width: 3;
-		transition: transform 0.3s ease-in-out;
+		transition: $standard-transition;
 		color: $primary-text-color;
 	}
 	
@@ -51,25 +51,30 @@
 		z-index: 20;
 	}
 	
-	.open #left-a {
-		transform: translate(10px, -3px) rotate(25deg)
-	}
-	
-	.open #middle-slash {
-		opacity: 0;
-		transition: transform 0.5s ease-in-out;
-	}
-	
-  	.open #right-a {
-		transform: translate(-7px, 7px) rotate(-25deg)
+	.open {
+		border: none;
+		transition: $standard-transition;
+
+		#left-a {
+			transform: translate(10px, -3px) rotate(25deg)
+		}
+		#middle-slash {
+			opacity: 0;
+			transition: transform 0.5s ease-in-out;
+		}
+		#right-a {
+			transform: translate(-7px, 7px) rotate(-25deg)
+		}
 	}
 
 	:global(body.dark-mode)  {
         & .hamburger {
             color: $dark-text-color;
+			border-color: $dark-text-color;
+			background-color: $dark-base-dark-grey;
 		}
-		// & svg line {
-		// 	color: $dark-text-color;
-		// }
+		& svg line {
+			color: $dark-text-color;
+		}
     }
 </style>

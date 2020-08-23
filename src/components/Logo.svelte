@@ -4,13 +4,21 @@
 	</svg>
 </div>
 
-<style>
+<style type="text/scss">
+	@import '../styles/vars';
 	text {
-		fill: currentColor;
+		fill: $primary-text-color;
 		font-size: 1.5rem;
 	}
 	.logo-container {
 		display: flex;
 		align-items: center;
+		z-index: 30;
+	}
+
+	:global(body.dark-mode)  {
+		& text {
+			fill: $dark-text-color;
+		}
 	}
 </style>
