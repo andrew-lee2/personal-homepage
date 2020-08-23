@@ -2,8 +2,14 @@
 	import Hoverable from '../utils/Hoverable.svelte';
 	export let open = false;
 
-	// TODO if open and esc is pressed closed menu
+	function handleKeydown(event) {
+		if (event.key === "Escape") {
+			open = false;
+		}
+	}
 </script>
+
+<svelte:window on:keydown={handleKeydown}/>
 
 <Hoverable class="display-front" let:hovering={hovered}>
 	<button class="hamburger" class:open class:hovered on:click={() => open = !open}>
