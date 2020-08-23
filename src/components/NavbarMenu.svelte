@@ -25,8 +25,7 @@
     .navbar-link {
         color: $primary-text-color;
         &:hover {
-            // TODO get a color for this
-            color: #4a5568;
+            color: $primary-text-hover-color;
         }
     }
     a {
@@ -44,6 +43,9 @@
     :global(body.dark-mode)  {
         & .navbar-link {
             color: $dark-text-color;
+            &:hover {
+                color: $dark-text-hover-color;
+            }
         }
     }
 </style>

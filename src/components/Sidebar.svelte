@@ -49,8 +49,7 @@
         color: $primary-text-color;
         &:hover {
             box-shadow: inset 0 -0.2em $primary-highlight;
-            // TODO get a color for this
-            color: #4a5568;
+            color: $primary-text-hover-color;
         }
     }
 
@@ -70,6 +69,9 @@
         }
         & .sidebar-link {
             color: $dark-text-color;
+            &:hover {
+                color: $dark-text-hover-color;
+            }
         }
     }
 </style>

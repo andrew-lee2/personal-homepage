@@ -5,6 +5,7 @@
 </script>
   
 <style type="text/scss">
+  @import '../styles/vars';
   $d: 1.25em;
   $p: .25em;
   $g: .1em;
@@ -37,11 +38,15 @@
       height: $d;
       width: 3em;
       border-radius: .5*$d + $p;
+      border: 0.1rem transparent solid;
       background: hsl(199, 98%, calc(var(--j)*48%));
       color: transparent;
       user-select: none;
       transition: .3s;
       cursor: pointer;
+      &:hover {
+        border: 0.1rem $primary-highlight solid;
+      }
       
       &:before, &:after {
         width: $d; height: $d;

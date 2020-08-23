@@ -1,14 +1,20 @@
 <script>
-	export let open = false
+	import Hoverable from '../utils/Hoverable.svelte';
+	export let open = false;
+
+	// TODO if open and esc is pressed closed menu
 </script>
 
-<button class="hamburger" class:open on:click={() => open = !open}>
-	<svg width=24 height=24>
-		<line id="left-a" x1=12 y1=2 x2=4 y2=22/>
-		<line id="middle-slash" x1=7 y1=15 x2=17 y2=15/>
-		<line id="right-a" x1=12 y1=2 x2=20 y2=22/>
-	</svg>
-</button>
+<Hoverable class="display-front" let:hovering={hovered}>
+	<button class="hamburger" class:open class:hovered on:click={() => open = !open}>
+		<svg width=24 height=24>
+			<line id="left-a" class:hovered x1=12 y1=2 x2=4 y2=22/>
+			<line id="middle-slash" class:hovered x1=7 y1=15 x2=17 y2=15/>
+			<line id="right-a" class:hovered x1=12 y1=2 x2=20 y2=22/>
+		</svg>
+	</button>
+</Hoverable>
+
 
 <style type="text/scss">
 	@import '../styles/vars';
@@ -24,15 +30,9 @@
 		border: 0.125rem solid;
 		border-color: $primary-text-color;
 		background-color: $primary-base;
-		
-
-        &:hover {
-			// TODO need to get color for this
-            color: #4a5568;
-        }
         &:focus {
             outline: 0;
-        }
+		}
     }
 
 	svg {
@@ -46,9 +46,10 @@
 		transition: $standard-transition;
 		color: $primary-text-color;
 	}
-	
-	button {
-		z-index: 20;
+
+	.hovered {
+		color: $primary-text-hover-color;
+		border-color: $primary-text-hover-color;
 	}
 	
 	.open {
@@ -75,6 +76,10 @@
 		}
 		& svg line {
 			color: $dark-text-color;
+		}
+		& .hovered {
+			color: $dark-text-hover-color;
+			border-color: $dark-text-hover-color;
 		}
     }
 </style>
