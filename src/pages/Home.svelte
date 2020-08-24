@@ -45,7 +45,6 @@
 <style type="text/scss">
     @import '../styles/vars';
     // TODO look at using a different font-family?
-
     // TODO this should be temporary til we fix sidebar
     .fix-home {
         position: fixed;
@@ -68,23 +67,16 @@
             font-size: 3rem;
         }
     }
-    // TODO do we need this?
-    // .dud {
-    //     color: pink;
-    // }
-
     main {
         height: 100%;
         width: 100%;
         background-color: $primary-base;
-        // TODO make this a variable?
 		transition: background-color 0.3s;
     }
 
 	:global(body.dark-mode)  {
         & main {
 		    background-color: $dark-base-dark-grey;
-		    color: #bfc2c7;
         }
         & .text {
             color: $dark-text-color;

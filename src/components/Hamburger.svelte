@@ -39,6 +39,9 @@
         &:focus {
             outline: 0;
 		}
+		&.open {
+			background-color: $primary-sidebar-background;
+		}
     }
 
 	svg {
@@ -79,6 +82,9 @@
             color: $dark-text-color;
 			border-color: $dark-text-color;
 			background-color: $dark-base-dark-grey;
+			&.open {
+				background-color: $dark-sidebar-background;
+			}
 		}
 		& svg line {
 			color: $dark-text-color;
