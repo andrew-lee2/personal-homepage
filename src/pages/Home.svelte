@@ -1,6 +1,5 @@
 <script lang="ts">
-    import Navbar from '../components/Navbar.svelte';
-	import Sidebar from '../components/Sidebar.svelte';
+    import BasePage from '../components/BasePage.svelte';
     import { onMount } from 'svelte';
     import { TextScramble } from '../utils/textScramble';
     
@@ -30,27 +29,19 @@
     let open: boolean = false;
 </script>
 
-<div class="fix-home">
-    <Sidebar bind:open/>
-    <Navbar bind:sidebar={open}/>
-    
-    <main>
-        <div class="container">
-            <div bind:this="{textElement}" class="text"></div>
-        </div>
-    </main>
-</div>
+<BasePage/>
+
+<main>
+    <div class="container">
+        <div bind:this="{textElement}" class="text"></div>
+    </div>
+</main>
 
 
 <style type="text/scss">
     @import '../styles/vars';
     // TODO look at using a different font-family?
     // TODO this should be temporary til we fix sidebar
-    .fix-home {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-    }
     .container {
         height: 65%;
         width: 100%;

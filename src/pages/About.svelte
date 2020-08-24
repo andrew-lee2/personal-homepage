@@ -1,39 +1,33 @@
 <script lang="ts">
+    import BasePage from '../components/BasePage.svelte';
 </script>
+
+<BasePage/>
 
 <main>
     <p>Page under construction</p>
 </main>
 
-<style>
+<style type="text/scss">
+    @import '../styles/vars';
     main {
-        text-align: center;
-        margin: 0 auto;
         height: 100%;
-        overflow: hidden;
-        display: grid;
-        grid-template-columns: 25px auto auto 25px;
-        grid-template-rows: auto auto auto;
+        width: 100%;
+        background-color: $primary-base;
+		transition: background-color 0.3s;
     }
 
-    h1 {
-        color: #ff3e00;
-        text-transform: uppercase;
-        font-size: 4em;
-        font-weight: 100;
+    p {
+        height: 65%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
     }
 
-    .text-container {
-        grid-area: 2 / 2 / 2 / 4;
-    }
-
-    @media (min-width: 640px) {
-        main {
-            max-width: none;
-            grid-template-columns: 100px auto auto 100px;
-        }
-        .text-container {
-            grid-area: 2 / 2 / 2 / 2;
+    :global(body.dark-mode)  {
+        & main {
+		    background-color: $dark-base-dark-grey;
         }
     }
 </style>
