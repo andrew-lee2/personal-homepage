@@ -20,10 +20,13 @@
 </header>
 
 <style type="text/scss">
+    @import '../styles/vars';
+
     .navbar-header {
         justify-content: space-between;
-        background-color: #edf2f7;
-        color: #718096;
+        color: $primary-text-color;
+        background-color: $primary-base;
+        transition: background-color 0.3s;
         align-items: center;
         padding: 0.5rem;
         border-bottom-width: 2px;
@@ -32,9 +35,21 @@
         // position: fixed;
         // width: 100%;
         // top: 0;
+        // background-color: $dark-base-dark-grey;
+        // color: $dark-text-color;
     }
 
     .flex {
         display: flex;
+    }
+
+    :global(body.dark-mode)  {
+        & .navbar-header {
+            background-color: $dark-base-dark-grey;
+            // background-color: $dark-darker-dark-grey;
+            color: $dark-text-color;
+        //     color: $primary-text-color;
+        // background-color: $primary-base;
+        }
     }
 </style>

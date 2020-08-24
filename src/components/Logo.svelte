@@ -1,16 +1,24 @@
-<div class="temp">
+<div class="logo-container">
 	<svg width=auto height=30>
 		<text x=0 y=22>Andrew Lee</text>
 	</svg>
 </div>
 
-<style>
+<style type="text/scss">
+	@import '../styles/vars';
 	text {
-		fill: currentColor;
+		fill: $primary-text-color;
 		font-size: 1.5rem;
 	}
-	.temp {
+	.logo-container {
 		display: flex;
 		align-items: center;
+		z-index: 30;
+	}
+
+	:global(body.dark-mode)  {
+		& text {
+			fill: $dark-text-color;
+		}
 	}
 </style>

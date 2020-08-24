@@ -1,5 +1,7 @@
 <script>
     let hovering;
+    let clazz;
+    export {clazz as class};
 
     function enter() {
         hovering = true;
@@ -10,6 +12,12 @@
     }
 </script>
 
-<div on:mouseenter={enter} on:mouseleave={leave}>
+<div class="{`${clazz || ''}`}" on:mouseenter={enter} on:mouseleave={leave}>
     <slot hovering={hovering}></slot>
 </div>
+
+<style>
+    .display-front {
+        z-index: 20;
+    }
+</style>

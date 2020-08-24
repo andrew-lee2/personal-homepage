@@ -43,10 +43,11 @@
     // TODO add margin back in for navbar stuff 
     .navbar-link {
         font-size: 18px;
+        color: $primary-text-color;
     }
-    .white {
-        color: #FFFFFF;
-    }
+    // .white {
+    //     color: #FFFFFF;
+    // }
     a {
         color: inherit;
         text-decoration: none;

@@ -23,8 +23,9 @@
     }
 
     .navbar-link {
+        color: $primary-text-color;
         &:hover {
-            color: #4a5568;
+            color: $primary-text-hover-color;
         }
     }
     a {
@@ -32,10 +33,19 @@
         text-decoration: none;
         padding-bottom: .25em;
         &:hover {
-            box-shadow: inset 0 -0.2em red;
+            box-shadow: inset 0 -0.2em $primary-highlight;
         }
     }
     .current-site {
-        box-shadow: inset 0 -0.2em pink;
+        box-shadow: inset 0 -0.2em $primary-highlight;
+    }
+
+    :global(body.dark-mode)  {
+        & .navbar-link {
+            color: $dark-text-color;
+            &:hover {
+                color: $dark-text-hover-color;
+            }
+        }
     }
 </style>

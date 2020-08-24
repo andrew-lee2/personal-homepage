@@ -1,6 +1,5 @@
 <script lang="ts">
-    import Navbar from '../components/Navbar.svelte';
-	import Sidebar from '../components/Sidebar.svelte';
+    import BasePage from '../components/BasePage.svelte';
     import { onMount } from 'svelte';
     import { TextScramble } from '../utils/textScramble';
     
@@ -30,36 +29,21 @@
     let open: boolean = false;
 </script>
 
-<div class="fix-home">
-    <Sidebar bind:open/>
-    <Navbar bind:sidebar={open}/>
-    
-    <main>
-        <div class="container">
-            <div bind:this="{textElement}" class="text"></div>
-        </div>
-    </main>
-</div>
+<BasePage/>
+
+<main>
+    <div class="container">
+        <div bind:this="{textElement}" class="text"></div>
+    </div>
+</main>
 
 
 <style type="text/scss">
     @import '../styles/vars';
-    // @import 'https://fonts.googleapis.com/css?family=Roboto+Mono:100';
-    // html,
-    // body {
-    //     font-family: 'Roboto Mono', monospace;
-    //     background: #FFFFFF;    
-    //     position: fixed;
-    // }
-
+    // TODO look at using a different font-family?
     // TODO this should be temporary til we fix sidebar
-    .fix-home {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-    }
     .container {
-        height: 100%;
+        height: 65%;
         width: 100%;
         justify-content: center;
         align-items: center;
@@ -68,37 +52,25 @@
     .text {
         font-weight: 100;
         font-size: 2rem;
-        // color: #757575;
-        // color: var(--text-color);
-        color: #fafafa;
+        color: $primary-text-color;
         padding: 0 2rem;
-        margin-bottom: 15rem;
         @media screen and (min-width: $small){
             font-size: 3rem;
         }
     }
-    .dud {
-        color: #757575;
-        // color: #fafafa;
-        // color: var(--text-color);
-    }
-
     main {
-        // background-color: #FFFFFF;
         height: 100%;
         width: 100%;
-        background-color: #f2eee2;
-		color: #0084f6;
-		transition: background-color 0.3s
+        background-color: $primary-base;
+		transition: background-color 0.3s;
     }
 
-    // :global(body) {
-	// 	background-color: #f2eee2;
-	// 	color: #0084f6;
-	// 	transition: background-color 0.3s
-	// }
-	:global(body.dark-mode) main {
-		background-color: #1d3040;
-		color: #bfc2c7;
+	:global(body.dark-mode)  {
+        & main {
+		    background-color: $dark-base-dark-grey;
+        }
+        & .text {
+            color: $dark-text-color;
+        }
 	}
 </style>

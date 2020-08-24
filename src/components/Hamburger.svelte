@@ -1,61 +1,97 @@
 <script>
-	export let open = false
+	import Hoverable from '../utils/Hoverable.svelte';
+	export let open = false;
+
+	function handleKeydown(event) {
+		if (event.key === "Escape") {
+			open = false;
+		}
+	}
 </script>
 
-<button class="hamburger" class:open on:click={() => open = !open}>
-	<svg width=32 height=24>
-		<line id="top" x1=0 y1=2  x2=32 y2=2/>
-		<line id="middle" x1=0 y1=12 x2=24 y2=12/>
-		<line id="bottom" x1=0 y1=22 x2=32 y2=22/>
-	</svg>
-</button>
+<svelte:window on:keydown={handleKeydown}/>
+
+<Hoverable class="display-front" let:hovering={hovered}>
+	<button class="hamburger" class:open class:hovered on:click={() => open = !open}>
+		<svg width=24 height=24>
+			<line id="left-a" class:hovered x1=12 y1=2 x2=4 y2=22/>
+			<line id="middle-slash" class:hovered x1=7 y1=15 x2=17 y2=15/>
+			<line id="right-a" class:hovered x1=12 y1=2 x2=20 y2=22/>
+		</svg>
+	</button>
+</Hoverable>
+
 
 <style type="text/scss">
-    .hamburger {
-        color: #a0aec0;
+	@import '../styles/vars';
+	
+	.hamburger {
+        color: $primary-text-color;
         cursor: pointer;
         margin-right: 1rem;
 		margin-bottom: 0;
         border-style: none;
 		display: flex;
 		align-items: center;
-
-        &:hover {
-            color: #4a5568;
-        }
+		border: 0.125rem solid;
+		border-color: $primary-text-color;
+		background-color: $primary-base;
         &:focus {
             outline: 0;
-        }
+		}
+		&.open {
+			background-color: $primary-sidebar-background;
+		}
     }
 
 	svg {
 		min-height: 24px;
-		transition: transform 0.3s ease-in-out;
+		transition: $standard-transition;
 	}
 	
 	svg line {
 		stroke: currentColor;
 		stroke-width: 3;
-		transition: transform 0.3s ease-in-out
+		transition: $standard-transition;
+		color: $primary-text-color;
+	}
+
+	.hovered {
+		color: $primary-text-hover-color;
+		border-color: $primary-text-hover-color;
 	}
 	
-	button {
-		z-index: 20;
+	.open {
+		border: none;
+		transition: $standard-transition;
+
+		#left-a {
+			transform: translate(10px, -3px) rotate(25deg)
+		}
+		#middle-slash {
+			opacity: 0;
+			transition: transform 0.5s ease-in-out;
+		}
+		#right-a {
+			transform: translate(-7px, 7px) rotate(-25deg)
+		}
 	}
-	
-	.open svg {
-		transform: scale(0.7)
-	}
-	
-	.open #top {
-		transform: translate(6px, 0px) rotate(45deg)
-	}
-	
-	.open #middle {
-		opacity: 0;
-	}
-	
-  	.open #bottom {
-		transform: translate(-12px, 9px) rotate(-45deg)
-	}
+
+	:global(body.dark-mode)  {
+        & .hamburger {
+            color: $dark-text-color;
+			border-color: $dark-text-color;
+			background-color: $dark-base-dark-grey;
+			&.open {
+				background-color: $dark-sidebar-background;
+			}
+		}
+		& svg line {
+			color: $dark-text-color;
+		}
+		& .hovered {
+			color: $dark-text-hover-color;
+			border-color: $dark-text-hover-color;
+		}
+    }
 </style>
