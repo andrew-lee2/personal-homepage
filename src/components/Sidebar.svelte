@@ -18,7 +18,7 @@
 
     .sidebar-container {
         position: absolute;
-        width: 50%;
+        width: 60%;
         height: 100%;
         background-color: $primary-sidebar-background;
         border-right-width: 2px;
