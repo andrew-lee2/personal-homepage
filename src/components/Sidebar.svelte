@@ -1,15 +1,18 @@
 <script lang="ts">
+    import { Router, link } from "svelte-routing";
     export let open: boolean = false;
-    let route: string = window.location.pathname;
+    let route: string = window.location.pathname
 </script>
 
 <aside class="sidebar-container" class:open>
 	<nav class="sidebar-nav">
-        <ul>
-            <li><a class="sidebar-link" class:current-site="{route === '/'}" href="/">Home</a></li>
-            <li><a class="sidebar-link" class:current-site="{route === '/about'}" href="/about">About</a></li>
-            <li><a class="sidebar-link" class:current-site="{route === '/project'}" href="/projects">Projects</a></li>
-        </ul>
+        <Router>
+            <ul>
+                <li><a href="/" use:link class="sidebar-link" class:current-site="{route === '/'}">Home</a></li>
+                <li><a href="/about" use:link class="sidebar-link" class:current-site="{route === '/about'}" >About</a></li>
+                <li><a href="/projects" use:link class="sidebar-link" class:current-site="{route === '/project'}">Projects</a></li>
+            </ul>
+        </Router>
 	</nav>
 </aside>
 

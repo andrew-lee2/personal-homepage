@@ -9,9 +9,9 @@
 
 <Router url="{url}">
 	<div>
-		<Route path="/"><Home /></Route>
 		<Route path="about" component="{About}" />
 		<Route path="projects" component="{Projects}" />
+		<Route path="/"><Home /></Route>
 	</div>
 </Router>
 

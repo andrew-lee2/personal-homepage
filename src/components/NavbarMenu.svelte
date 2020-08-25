@@ -1,11 +1,14 @@
 <script lang="ts">
+    import { Router, link } from "svelte-routing";
     let route: string = window.location.pathname;
 </script>
 
 <nav class="navbar-menu">
-    <a href="/" class="navbar-link" class:current-site="{route === '/'}">Home</a>
-    <a href="/about" class="navbar-link" class:current-site="{route === '/about'}">About</a>
-    <a href="/projects" class="navbar-link" class:current-site="{route === '/projects'}">Projects</a>
+    <Router>
+        <a href="/" use:link class="navbar-link" class:current-site="{route === '/'}">Home</a>
+        <a href="/about" use:link class="navbar-link" class:current-site="{route === '/about'}">About</a>
+        <a href="/projects" use:link class="navbar-link" class:current-site="{route === '/projects'}">Projects</a>
+    </Router>
 </nav>
 
 <style type="text/scss">

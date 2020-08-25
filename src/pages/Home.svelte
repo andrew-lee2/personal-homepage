@@ -25,7 +25,7 @@
         
         next()
     });
-
+    // TODO do we need this line below?
     let open: boolean = false;
 </script>
 

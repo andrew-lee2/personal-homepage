@@ -1,9 +1,10 @@
 <script lang="ts">
+    import { get } from 'svelte/store';
     import { darkMode } from '../store.js';
-    
+
     function toggleDarkMode(): void {
-      darkMode.set(!darkMode);
-      // console.log(darkMode);
+      const curDarkMode: boolean = get(darkMode);
+      darkMode.update(existing => !curDarkMode);
       window.document.body.classList.toggle('dark-mode')
     }
 </script>
