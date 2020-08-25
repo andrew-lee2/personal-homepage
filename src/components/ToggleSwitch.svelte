@@ -1,5 +1,9 @@
 <script lang="ts">
+    import { darkMode } from '../store.js';
+    
     function toggleDarkMode(): void {
+      darkMode.set(!darkMode);
+      // console.log(darkMode);
       window.document.body.classList.toggle('dark-mode')
     }
 </script>
