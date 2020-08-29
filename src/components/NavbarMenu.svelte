@@ -1,6 +1,16 @@
 <script lang="ts">
     import { Router, link } from "svelte-routing";
-    let route: string = window.location.pathname;
+    import {getContext} from 'svelte';
+	import {ROUTER} from 'svelte-routing/src/contexts';
+    const { activeRoute } = getContext(ROUTER);
+    
+    let route: string = '';
+
+	$: {
+        if ($activeRoute !== null) {
+            route = $activeRoute.uri;
+        }
+     }
 </script>
 
 <nav class="navbar-menu">

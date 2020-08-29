@@ -1,5 +1,5 @@
 <div class="logo-container">
-	<svg width=auto height=30>
+	<svg width=100% height=30>
 		<text x=0 y=22>Andrew Lee</text>
 	</svg>
 </div>

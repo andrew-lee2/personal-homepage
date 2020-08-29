@@ -1,7 +1,18 @@
 <script lang="ts">
     import { Router, link } from "svelte-routing";
+    import {getContext} from 'svelte';
+	import {ROUTER} from 'svelte-routing/src/contexts';
+    const { activeRoute } = getContext(ROUTER);
+    
+    let route: string = '';
     export let open: boolean = false;
-    let route: string = window.location.pathname
+
+	$: {
+        if ($activeRoute !== null) {
+            route = $activeRoute.uri;
+        }
+     }
+
 </script>
 
 <aside class="sidebar-container" class:open>
@@ -10,7 +21,7 @@
             <ul>
                 <li><a href="/" use:link class="sidebar-link" class:current-site="{route === '/'}">Home</a></li>
                 <li><a href="/about" use:link class="sidebar-link" class:current-site="{route === '/about'}" >About</a></li>
-                <li><a href="/projects" use:link class="sidebar-link" class:current-site="{route === '/project'}">Projects</a></li>
+                <li><a href="/projects" use:link class="sidebar-link" class:current-site="{route === '/projects'}">Projects</a></li>
             </ul>
         </Router>
 	</nav>

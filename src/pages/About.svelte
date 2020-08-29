@@ -1,10 +1,7 @@
 <script lang="ts">
-    import BasePage from '../components/BasePage.svelte';
     // https://github.com/EmilTholin/svelte-routing/issues/122
     export let location: any;
 </script>
-
-<BasePage/>
 
 <main>
     <p>Page under construction</p>

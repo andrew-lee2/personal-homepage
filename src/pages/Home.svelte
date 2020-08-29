@@ -1,5 +1,4 @@
 <script lang="ts">
-    import BasePage from '../components/BasePage.svelte';
     import { onMount } from 'svelte';
     import { TextScramble } from '../utils/textScramble';
     
@@ -25,11 +24,7 @@
         
         next()
     });
-    // TODO do we need this line below?
-    let open: boolean = false;
 </script>
-
-<BasePage/>
 
 <main>
     <div class="container">
