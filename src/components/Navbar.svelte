@@ -5,8 +5,6 @@
     import ToggleSwitch from '../components/ToggleSwitch.svelte';
 	
     export let sidebar: Boolean = false;
-    // let darkMode: Boolean = false;
-    // console.log(darkMode);
 </script>
 
 <header class="flex navbar-header">
@@ -46,10 +44,7 @@
     :global(body.dark-mode)  {
         & .navbar-header {
             background-color: $dark-base-dark-grey;
-            // background-color: $dark-darker-dark-grey;
             color: $dark-text-color;
-        //     color: $primary-text-color;
-        // background-color: $primary-base;
         }
     }
 </style>

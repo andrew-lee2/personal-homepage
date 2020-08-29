@@ -1,11 +1,24 @@
 <script lang="ts">
-    let route: string = window.location.pathname;
+    import { Router, link } from "svelte-routing";
+    import {getContext} from 'svelte';
+	import {ROUTER} from 'svelte-routing/src/contexts';
+    const { activeRoute } = getContext(ROUTER);
+    
+    let route: string = '';
+
+	$: {
+        if ($activeRoute !== null) {
+            route = $activeRoute.uri;
+        }
+     }
 </script>
 
 <nav class="navbar-menu">
-    <a href="/" class="navbar-link" class:current-site="{route === '/'}">Home</a>
-    <a href="/about" class="navbar-link" class:current-site="{route === '/about'}">About</a>
-    <a href="/projects" class="navbar-link" class:current-site="{route === '/projects'}">Projects</a>
+    <Router>
+        <a href="/" use:link class="navbar-link" class:current-site="{route === '/'}">Home</a>
+        <a href="/about" use:link class="navbar-link" class:current-site="{route === '/about'}">About</a>
+        <a href="/projects" use:link class="navbar-link" class:current-site="{route === '/projects'}">Projects</a>
+    </Router>
 </nav>
 
 <style type="text/scss">
