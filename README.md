@@ -27,6 +27,9 @@ npm install
 
 ...then start [Rollup](https://rollupjs.org):
 
+might have to run this...
+https://stackoverflow.com/questions/48147896/error-in-cannot-find-module-node-sass
+
 ```bash
 npm run dev
 ```
