@@ -19,9 +19,15 @@
 	<nav class="sidebar-nav">
         <Router>
             <ul>
-                <li><a href="/" use:link class="sidebar-link" class:current-site="{route === '/'}">Home</a></li>
-                <li><a href="/about" use:link class="sidebar-link" class:current-site="{route === '/about'}" >About</a></li>
-                <li><a href="/projects" use:link class="sidebar-link" class:current-site="{route === '/projects'}">Projects</a></li>
+                <li class="sidebar-link-container">
+                    <a href="/" use:link class="sidebar-link" class:current-site="{route === '/'}">Home</a>
+                </li>
+                <li class="sidebar-link-container">
+                    <a href="/about" use:link class="sidebar-link" class:current-site="{route === '/about'}" >About</a>
+                </li>
+                <li class="sidebar-link-container">
+                    <a href="/projects" use:link class="sidebar-link" class:current-site="{route === '/projects'}">Projects</a>
+                </li>
             </ul>
         </Router>
 	</nav>
@@ -54,22 +60,38 @@
 	
 	.open {
 		left: 0
-	}
-    .sidebar-link {
-        display: inline-flex;
-        text-decoration: none;
-        padding-bottom: .25em;
-        margin: 0.5rem 0;
-        color: $primary-text-color;
+    }
+    
+    .sidebar-link-container {
+        margin: 0.9rem 0;
+        .sidebar-link {
+            text-decoration: none;
+            color: $primary-text-color;
+            transition: $nav-animate;
+            position: relative;
+            &:before,
+            &:after {
+                @include underline();
+            }
+        }
         &:hover {
-            box-shadow: inset 0 -0.2em $primary-highlight;
-            color: $primary-text-hover-color;
+            cursor: pointer;
+            .sidebar-link {
+                color: $primary-text-hover-color;
+                &:before,
+                &:after {
+                    @include show-underline();
+                }
+            }
+        }
+        .current-site {
+            &:before,
+            &:after {
+                @include show-underline();
+            }
         }
     }
 
-    .current-site {
-        box-shadow: inset 0 -0.2em $primary-highlight;
-    }
     ul {
         padding: 0;
     }

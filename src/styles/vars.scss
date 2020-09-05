@@ -1,6 +1,6 @@
 $small: 768px;
 
-$dark-base-dark-grey: rgba(18, 18, 18, .88);
+$dark-base-dark-grey: #1e1e1e;
 $dark-darker-dark-grey: #121212;
 $dark-text-color: #FFFFFF;
 
@@ -23,3 +23,23 @@ $primary-base: #FFFFFF;
 $primary-sidebar-background: #E8EAF6;
 
 $standard-transition: transform 0.3s ease-in-out;
+$nav-animate: all 0.2s ease-in-out;
+
+@mixin underline() {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    width: 0px;
+    height: 4px;
+    margin: 4px 0 0;
+    transition: $nav-animate;
+    transition-duration: 0.5s;
+    opacity: 0;
+    background-color: $primary-highlight;
+    left: 0;
+}
+
+@mixin show-underline() {
+    width: 100%;
+    opacity: 1;
+}

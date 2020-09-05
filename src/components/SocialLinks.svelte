@@ -18,8 +18,8 @@
     }
     .icon {
         display: inline-block;
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
         background-size: cover;
         filter: $primary-text-filter;
     }
@@ -41,8 +41,8 @@
 
     @media (min-width: 640px) {
         .icon {
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
         }
     }
 
