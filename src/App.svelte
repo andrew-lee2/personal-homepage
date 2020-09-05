@@ -33,4 +33,14 @@
 		padding: 0;
 		transition: background-color 0.3s
 	}
+
+	div {
+		background-color: $primary-base;
+	}
+
+	:global(body.dark-mode)  {
+        & div {
+		    background-color: $dark-base-dark-grey;
+        }
+	}
 </style>
