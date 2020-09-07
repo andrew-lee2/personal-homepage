@@ -28,7 +28,8 @@
 </nav>
 
 <style type="text/scss">
-     @import '../styles/vars';
+    @import '../styles/mixins';
+    @import '../styles/vars';
     .navbar-menu {
         display: none;
         margin-left: auto;

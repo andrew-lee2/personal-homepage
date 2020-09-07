@@ -29,12 +29,6 @@
         padding: 0.5rem;
         border-bottom-width: 2px;
         height: 2.5rem;
-        // TODO sidebar breaks if we fix it 
-        // position: fixed;
-        // width: 100%;
-        // top: 0;
-        // background-color: $dark-base-dark-grey;
-        // color: $dark-text-color;
     }
 
     .flex {

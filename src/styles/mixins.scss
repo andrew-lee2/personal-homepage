@@ -1,0 +1,20 @@
+@import './vars';
+
+@mixin underline() {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    width: 0px;
+    height: 4px;
+    margin: 4px 0 0;
+    transition: $nav-animate;
+    transition-duration: 0.5s;
+    opacity: 0;
+    background-color: $primary-highlight;
+    left: 0;
+}
+
+@mixin show-underline() {
+    width: 100%;
+    opacity: 1;
+}

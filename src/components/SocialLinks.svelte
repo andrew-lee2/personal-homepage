@@ -13,7 +13,6 @@
     .logo-block {
         display: flex;
         justify-content: flex-start;
-        /*TODO change to rem*/
         width: 100%;
     }
     .icon {
@@ -39,7 +38,7 @@
         filter: $primary-text-hover-filter; 
     }
 
-    @media (min-width: 640px) {
+    @media screen and (min-width: $small){
         .icon {
             width: 30px;
             height: 30px;
