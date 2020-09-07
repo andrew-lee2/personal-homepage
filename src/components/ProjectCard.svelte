@@ -1,8 +1,16 @@
 <script>
-   let showClicked = false;
-   function handleClick() {
-       showClicked = !showClicked;
-   }
+    import { onMount } from 'svelte';
+    let description;
+    let showClicked = false;
+    let displayShowMore = true;
+
+    onMount(() => {
+        displayShowMore = description.scrollHeight > description.clientHeight;
+    })
+
+    function handleClick() {
+        showClicked = !showClicked;
+    }
 </script>
 
 <div class="project-card" class:clicked="{showClicked === true}">
@@ -16,11 +24,13 @@
     </div>
     <div class="project-details">
         <h6 class="description-header">Description</h6>
-        <p class="description">this is a random sentence. this is a random sentence.this is a random sentence.this is a random sentence.this is a random sentence.this is a random sentence.this is a random sentence.this is a random sentence.this is a random sentence.</p>
-        <button
-            on:click={handleClick}
-            >Show More
-        </button>
+        <p bind:this={description} class="description">this is a random sentence.this is a randthis is a random sentence.this is a randthis is a random sentence.this is a randthis is a random sentence.this is a randthis is a random sentence.this is a rand.this is a random sentence.this is a random sentence.this is a random sentence.</p>
+        {#if displayShowMore}
+            <button
+                on:click={handleClick}
+                >Show More
+            </button>
+        {/if}
         <div class="tag-container">
             <span class="tech-tag">Python</span>
         </div>
