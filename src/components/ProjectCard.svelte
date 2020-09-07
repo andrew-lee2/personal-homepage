@@ -26,19 +26,54 @@
         <h6 class="description-header">Description</h6>
         <p bind:this={description} class="description">this is a random sentence.this is a randthis is a random sentence.this is a randthis is a random sentence.this is a randthis is a random sentence.this is a randthis is a random sentence.this is a rand.this is a random sentence.this is a random sentence.this is a random sentence.</p>
         {#if displayShowMore}
-            <button
-                on:click={handleClick}
-                >Show More
-            </button>
+            <div class="show-more-button">
+                <button
+                    on:click={handleClick}
+                >
+                {#if showClicked}
+                    Show Less
+                {:else}
+                    Show More
+                {/if}
+                </button>
+                {#if showClicked}
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="24 / arrows / chevron-bottom">
+                            <path id="icon" fill-rule="evenodd" clip-rule="evenodd" d="M2.35358 8.35352L1.64647 7.64641L6.00002 3.29285L10.3536 7.64641L9.64647 8.35352L6.00002 4.70707L2.35358 8.35352Z" fill="black"/>
+                        </g>
+                    </svg>
+                {:else}
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="24 / arrows / chevron-bottom">
+                            <path id="icon" fill-rule="evenodd" clip-rule="evenodd" d="M9.64642 3.64648L10.3535 4.35359L5.99998 8.70715L1.64642 4.35359L2.35353 3.64648L5.99998 7.29293L9.64642 3.64648Z" fill="black"/>
+                        </g>
+                    </svg>
+                {/if}
+            </div>
+            
         {/if}
         <div class="tag-container">
             <span class="tech-tag">Python</span>
+            <span class="tech-tag">Django</span>
         </div>
     </div>
 </div>
 
 <style type="text/scss">
     @import '../styles/vars';
+
+    .show-more-button {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.25em;
+    }
+    svg line {
+		stroke: currentColor;
+		stroke-width: 2;
+		transition: $standard-transition;
+		color: $primary-text-color;
+	}
+
     button {
         border: none;
         background-color: $primary-sidebar-background;
@@ -47,6 +82,9 @@
         text-align: left;
         padding-left: 0;
         cursor: pointer;
+        display: flex;
+        align-items: baseline;
+        margin: 0;
     }
 
 
@@ -89,6 +127,7 @@
         height: 25px;
         background-size: cover;
         filter: $dark-text-filter;
+        z-index: 0;
         background-image: url(../static/images/github.svg);
         &:hover {
             filter: $dark-text-hover-filter;
