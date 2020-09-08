@@ -1,11 +1,13 @@
 <script>
     import { onMount } from 'svelte';
+    import ExpandArrow from '../../public/static/images/expand_arrow.svg';
+    import CollapseArrow from '../../public/static/images/collapse_arrow.svg';
     let description;
     let showClicked = false;
     let displayShowMore = true;
 
     onMount(() => {
-        displayShowMore = description.scrollHeight > description.clientHeight;
+        displayShowMore = (description.scrollHeight > description.clientHeight || showClicked);
     })
 
     function handleClick() {
@@ -14,45 +16,42 @@
 </script>
 
 <div class="project-card" class:clicked="{showClicked === true}">
+    <!-- TODO make this a component? -->
     <div class="project-name-section">
         <h6 class="project-header">Project</h6>
         <!-- TODO make this a var -->
-        <h2 class="project-name">Resveration Framework</h2>
-        <!-- TODO make href a var -->
-        <!-- svelte-ignore a11y-missing-content -->
-        <a class="icon-github" href="https://github.com/andrew-lee2/"></a>
+        <div class="title-link-container">
+            <h2 class="project-name">Resveration Framework</h2>
+            <!-- TODO make href a var -->
+            <!-- svelte-ignore a11y-missing-content -->
+            <a class="icon-github" href="https://github.com/andrew-lee2/" target="_blank"></a>
+        </div>
     </div>
     <div class="project-details">
         <h6 class="description-header">Description</h6>
-        <p bind:this={description} class="description">this is a random sentence.this is a randthis is a random sentence.this is a randthis is a random sentence.this is a randthis is a random sentence.this is a randthis is a random sentence.this is a rand.this is a random sentence.this is a random sentence.this is a random sentence.</p>
+        <p bind:this={description} class:para-clicked="{showClicked === true}" class="description">this is a random sentence.this is a randthis is a random sentence.this is a randthis is a random sentence.this is a randthis is a random sentence.this is a randthis is a random sentence.this is a rand.this is a random sentence.this is a random sentence.this is a random sentence.</p>
+        <!-- TODO make this a component -->
         {#if displayShowMore}
             <div class="show-more-button">
                 <button
                     on:click={handleClick}
                 >
-                {#if showClicked}
-                    Show Less
-                {:else}
-                    Show More
-                {/if}
+                    {#if showClicked}
+                        Show Less
+                    {:else}
+                        Show More
+                    {/if}
                 </button>
                 {#if showClicked}
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="24 / arrows / chevron-bottom">
-                            <path id="icon" fill-rule="evenodd" clip-rule="evenodd" d="M2.35358 8.35352L1.64647 7.64641L6.00002 3.29285L10.3536 7.64641L9.64647 8.35352L6.00002 4.70707L2.35358 8.35352Z" fill="black"/>
-                        </g>
-                    </svg>
+                    <CollapseArrow/>
                 {:else}
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="24 / arrows / chevron-bottom">
-                            <path id="icon" fill-rule="evenodd" clip-rule="evenodd" d="M9.64642 3.64648L10.3535 4.35359L5.99998 8.70715L1.64642 4.35359L2.35353 3.64648L5.99998 7.29293L9.64642 3.64648Z" fill="black"/>
-                        </g>
-                    </svg>
+                    <ExpandArrow/>
                 {/if}
             </div>
             
         {/if}
         <div class="tag-container">
+            <!-- TODO make this a component -->
             <span class="tech-tag">Python</span>
             <span class="tech-tag">Django</span>
         </div>
@@ -96,7 +95,6 @@
         border-radius: 9999px;
         background-color: #FFFFFF;
         font-weight: 600;
-        // padding: 0.75rem;
         padding: 0.5rem 4% 0.5rem 4%;
         display: inline-block;
     }
@@ -120,54 +118,87 @@
         margin: 0;
     }
 
+    .title-link-container {
+        display: flex;
+        align-items: flex-end;
+        @media screen and (min-width: $small){
+            flex-direction: column;
+            align-items: flex-start;
+            height: 100%;
+        }
+    }
+
     .icon-github {
-        margin-top: auto;
-        display: inline-block;
         width: 25px;
         height: 25px;
-        background-size: cover;
         filter: $dark-text-filter;
+        // TODO something wierd going on
         z-index: 0;
         background-image: url(../static/images/github.svg);
         &:hover {
             filter: $dark-text-hover-filter;
         }
+
+        @media screen and (min-width: $small) {
+            margin-top: auto;
+        }
     }
 
     .clicked {
         // TODO might need to make this larger
-        height: 225px !important;
+        height: 350px !important;
+        @media screen and (min-width: $small) {
+            height: 255px !important;
+        }
+    }
+
+    .para-clicked {
+        height: 145px !important;
     }
 
     .description {
-        // TODO will need to adjust this
-        height: 125px;
+        height: 45px;
         overflow: hidden;
+        @media screen and (min-width: $small) {
+            height: 125px;
+        }
     }
 
     .project-card {
-        margin: 1rem;
-        min-width: 300px;
-        height: 175px;
-        display: flex; 
+        margin: 1rem 1rem 0 1rem;
+        display: flex;
+        flex-direction: column;
+        @media screen and (min-width: $small) {
+            flex-direction: row;
+            min-width: 300px;
+            height: 175px;
+        }
     }
 
     .project-name-section {
-        border-radius: 10px 0 0 10px;
+        border-radius: 10px 10px 0 0;
         display: flex;
         flex-direction: column;
         background-color: $primary-highlight;
-        // TODO need to change this
-        min-width: 150px;
         padding: 1rem;
+        
+        @media screen and (min-width: $small) {
+            // TODO need to change this
+            min-width: 150px;
+            border-radius: 10px 0 0 10px;
+            // width: 100%;
+        }
     }
 
     .project-details {
         display: flex;
         flex-direction: column;
-        border-radius: 0 10px 10px 0;
+        border-radius: 0 0 10px 10px;
         background-color: $primary-sidebar-background;
-        width: 100%;
         padding: 1rem;
+        @media screen and (min-width: $small) {
+            // width: 100%;
+            border-radius: 0 10px 10px 0;
+        }
     }
 </style>

@@ -4,8 +4,8 @@
 
 <!-- svelte-ignore a11y-missing-content -->
 <div class="logo-block">
-    <a class="icon icon-github" href="https://github.com/andrew-lee2/"></a>
-    <a class="icon icon-linkedin ml-20" href="https://www.linkedin.com/in/andrewlee10/"></a>
+    <a class="icon icon-github" href="https://github.com/andrew-lee2/" target="_blank"></a>
+    <a class="icon icon-linkedin ml-20" href="https://www.linkedin.com/in/andrewlee10/" target="_blank"></a>
 </div>
 
 <style type="text/scss">
