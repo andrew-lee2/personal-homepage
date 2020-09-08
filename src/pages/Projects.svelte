@@ -1,27 +1,49 @@
 <script lang="ts">
+    import ProjectCard from '../components/ProjectCard.svelte';
+    import SocialLinks from '../components/SocialLinks.svelte';
     // https://github.com/EmilTholin/svelte-routing/issues/122
     export let location: any;
 </script>
 
 <main>
-    <p>Page under construction</p>
+    <div class="container">
+        <ProjectCard/>
+        <ProjectCard/>
+        <ProjectCard/>
+        <ProjectCard/>
+        <ProjectCard/>
+        <ProjectCard/>
+        <div class="footer">
+            <SocialLinks></SocialLinks>
+        </div>
+    </div>
+    <!-- TODO make this a component -->
+    
 </main>
 
 <style type="text/scss">
     @import '../styles/vars';
-    main {
-        height: 100%;
-        width: 100%;
-        background-color: $primary-base;
-		transition: background-color 0.3s;
+    .footer {
+        margin: 1rem 0 4rem 0;
     }
 
-    p {
-        height: 65%;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
+    .container {
         display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        flex-direction: column;
+        width:100%;
+        margin: 3rem auto 0 auto;
+
+        @media screen and (min-width: $small){
+            width: 30%;
+            margin: 6rem auto 0 auto;
+        }
+    }
+
+    main {
+        background-color: $primary-base;
+		transition: background-color 0.3s;
     }
 
     :global(body.dark-mode)  {

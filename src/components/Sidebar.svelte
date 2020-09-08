@@ -35,6 +35,7 @@
 
 <style type="text/scss">
     @import '../styles/vars';
+    @import '../styles/mixins';
 
     .sidebar-container {
         position: absolute;
