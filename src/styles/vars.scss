@@ -10,8 +10,11 @@ $dark-text-hover-color: #b8b8b8;
 $dark-text-hover-filter: invert(82%) sepia(0%) saturate(127%) hue-rotate(179deg) brightness(94%) contrast(82%);
 $dark-overlay: #1F1B24;
 $dark-sidebar-background: #2a2a2a; 
+$dark-card-description: #363636;
+$dark-card-project: #2a2a2a;
 
-$primary-highlight: #3f50b5;
+// https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=1A237E
+$primary-highlight: #3F51B5;
 $secondary-highlight: #002884;
 
 $primary-text-color: #000000;
@@ -24,22 +27,3 @@ $primary-sidebar-background: #E8EAF6;
 
 $standard-transition: transform 0.3s ease-in-out;
 $nav-animate: all 0.2s ease-in-out;
-
-@mixin underline() {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    width: 0px;
-    height: 4px;
-    margin: 4px 0 0;
-    transition: $nav-animate;
-    transition-duration: 0.5s;
-    opacity: 0;
-    background-color: $primary-highlight;
-    left: 0;
-}
-
-@mixin show-underline() {
-    width: 100%;
-    opacity: 1;
-}

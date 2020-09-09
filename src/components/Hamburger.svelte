@@ -77,7 +77,7 @@
 		}
 	}
 
-	:global(body.dark-mode)  {
+	:global(body.dark-mode) {
         & .hamburger {
             color: $dark-text-color;
 			border-color: $dark-text-color;
