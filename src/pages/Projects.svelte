@@ -1,21 +1,40 @@
 <script lang="ts">
+import type { each } from 'svelte/internal';
     import ProjectCard from '../components/ProjectCard.svelte';
     import SocialLinks from '../components/SocialLinks.svelte';
     // https://github.com/EmilTholin/svelte-routing/issues/122
     export let location: any;
 
+    // TODO should we split this out into its own file? 
+    interface ProjectDetails {
+        name: string;
+        URL: string;
+        description: string;
+        tags: string[];
+    }
     
+    let allProjects: ProjectDetails[] = [
+        {
+            name: "Resveration Framework", 
+            URL: "https://https://github.com/andrew-lee2/personal-homepage", 
+            description: "Code for the website you are currently on!", 
+            tags: ["TypeScript", "Svelte"], 
+        },
+        {
+            name: "Standup Tracker", 
+            URL: "https://github.com/andrew-lee2/standup", 
+            description: "Google Home integration which writes to database and metrics are displayed with React graphs", 
+            tags: ["Javascript", "React", "Google Home"], 
+        },
+    ]
     
 </script>
 
 <main>
     <div class="container">
-        <ProjectCard/>
-        <ProjectCard/>
-        <ProjectCard/>
-        <ProjectCard/>
-        <ProjectCard/>
-        <ProjectCard/>
+        {#each allProjects as project}
+            <ProjectCard projectDetails={project}/>
+        {/each}
         <div class="footer">
             <SocialLinks></SocialLinks>
         </div>

@@ -1,16 +1,27 @@
-<script>
+<script lang="ts">
     import { onMount } from 'svelte';
     import ExpandArrow from '../components/ExpandArrow.svelte';
     import CollapseArrow from '../components/CollapseArrow.svelte';
-    let description;
-    let showClicked = false;
-    let displayShowMore = true;
+    let description: any;
+    let showClicked: boolean = false;
+    let displayShowMore: boolean = true;
+
+    // TODO centralize interface
+    interface ProjectDetails {
+        name: string;
+        URL: string;
+        description: string;
+        tags: string[];
+    }
+
+    export let projectDetails: ProjectDetails;
 
     onMount(() => {
+        // TODO can we make this more dynamic with the length of what needs to be exposed
         displayShowMore = (description.scrollHeight > description.clientHeight || showClicked);
     })
 
-    function handleClick() {
+    function handleClick(): void {
         showClicked = !showClicked;
     }
 </script>
@@ -21,15 +32,17 @@
         <h6 class="project-header">Project</h6>
         <!-- TODO make this a var -->
         <div class="title-link-container">
-            <h2 class="project-name">Resveration Framework</h2>
+            <h2 class="project-name">{projectDetails.name}</h2>
             <!-- TODO make href a var -->
             <!-- svelte-ignore a11y-missing-content -->
-            <a class="icon-github" href="https://github.com/andrew-lee2/" target="_blank"></a>
+            <a class="icon-github" href="{projectDetails.URL}" target="_blank"></a>
         </div>
     </div>
     <div class="project-details">
         <h6 class="description-header">Description</h6>
-        <p bind:this={description} class:para-clicked="{showClicked === true}" class="description">this is a random sentence.this is a randthis is a random sentence.this is a randthis is a random sentence.this is a randthis is a random sentence.this is a randthis is a random sentence.this is a rand.this is a random sentence.this is a random sentence.this is a random sentence.</p>
+        <p bind:this={description} class:para-clicked="{showClicked === true}" class="description">
+            {projectDetails.description}
+        </p>
         <!-- TODO make this a component -->
         {#if displayShowMore}
             <div class="show-more-button">
@@ -52,8 +65,9 @@
         {/if}
         <div class="tag-container">
             <!-- TODO make this a component -->
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Django</span>
+            {#each projectDetails.tags as tag}
+                <span class="tech-tag">{tag}</span>
+            {/each}
         </div>
     </div>
 </div>
