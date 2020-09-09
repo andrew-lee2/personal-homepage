@@ -97,6 +97,7 @@
         font-weight: 600;
         padding: 0.5rem 4% 0.5rem 4%;
         display: inline-block;
+        margin-right: 0.5rem;
     }
 
     h6 {
