@@ -3,6 +3,9 @@
     import SocialLinks from '../components/SocialLinks.svelte';
     // https://github.com/EmilTholin/svelte-routing/issues/122
     export let location: any;
+
+    
+    
 </script>
 
 <main>
@@ -17,14 +20,13 @@
             <SocialLinks></SocialLinks>
         </div>
     </div>
-    <!-- TODO make this a component -->
     
 </main>
 
 <style type="text/scss">
     @import '../styles/vars';
     .footer {
-        margin: 1rem 0 4rem 0;
+        margin: 4rem auto 4rem auto;
     }
 
     .container {
