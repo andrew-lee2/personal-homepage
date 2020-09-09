@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
-    import ExpandArrow from '../../public/static/images/expand_arrow.svg';
-    import CollapseArrow from '../../public/static/images/collapse_arrow.svg';
+    import ExpandArrow from '../components/ExpandArrow.svelte';
+    import CollapseArrow from '../components/CollapseArrow.svelte';
     let description;
     let showClicked = false;
     let displayShowMore = true;
@@ -67,7 +67,7 @@
         margin-bottom: 0.25em;
     }
     svg line {
-		stroke: currentColor;
+		stroke: $primary-text-color;
 		stroke-width: 2;
 		transition: $standard-transition;
 		color: $primary-text-color;
@@ -93,7 +93,7 @@
 
     .tech-tag {
         border-radius: 9999px;
-        background-color: #FFFFFF;
+        background-color: $primary-base;
         font-weight: 600;
         padding: 0.5rem 4% 0.5rem 4%;
         display: inline-block;
@@ -145,7 +145,6 @@
     }
 
     .clicked {
-        // TODO might need to make this larger
         height: 350px !important;
         @media screen and (min-width: $small) {
             height: 255px !important;
@@ -183,10 +182,8 @@
         padding: 1rem;
         
         @media screen and (min-width: $small) {
-            // TODO need to change this
             min-width: 150px;
             border-radius: 10px 0 0 10px;
-            // width: 100%;
         }
     }
 
@@ -197,8 +194,29 @@
         background-color: $primary-sidebar-background;
         padding: 1rem;
         @media screen and (min-width: $small) {
-            // width: 100%;
             border-radius: 0 10px 10px 0;
         }
+    }
+
+    :global(body.dark-mode) {
+        .project-details {
+            background-color: $dark-card-description;
+        }
+        .project-name-section {
+            background-color: $dark-card-project;
+        }
+        button {
+            color: $dark-text-color;
+            background-color: $dark-card-description;
+        }
+        svg {
+            filter: $dark-text-filter;
+        }
+        h6, p {
+            color: $dark-text-color;
+        }
+        
+
+
     }
 </style>
