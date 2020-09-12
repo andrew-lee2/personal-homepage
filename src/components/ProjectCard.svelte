@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import ShowMoreButton from '../components/ShowMoreButton.svelte';
+    import TechTag from '../components/TechTag.svelte';
     import type { ProjectDetails } from '../common/types';
     let description: any;
     let showClicked: boolean = false;
@@ -18,10 +19,8 @@
     <!-- TODO make this a component? -->
     <div class="project-name-section">
         <h6 class="project-header">Project</h6>
-        <!-- TODO make this a var -->
         <div class="title-link-container">
             <h2 class="project-name">{projectDetails.name}</h2>
-            <!-- TODO make href a var -->
             <!-- svelte-ignore a11y-missing-content -->
             <a class="icon-github" href="{projectDetails.URL}" target="_blank"></a>
         </div>
@@ -32,12 +31,11 @@
             {projectDetails.description}
         </p>
         {#if displayShowMore}
-            <ShowMoreButton bind:showClicked></ShowMoreButton>
+            <ShowMoreButton bind:showClicked/>
         {/if}
         <div class="tag-container">
-            <!-- TODO make this a component -->
             {#each projectDetails.tags as tag}
-                <span class="tech-tag">{tag}</span>
+                <TechTag tag={tag}/>
             {/each}
         </div>
     </div>
@@ -48,16 +46,6 @@
 
     .tag-container {
         display: block;
-    }
-
-    .tech-tag {
-        border-radius: 9 999px;
-        background-color: $primary-base;
-        // background-color: red;
-        font-weight: 600;
-        padding: 0.5rem 4% 0.5rem 4%;
-        display: inline-block;
-        margin-right: 0.5rem;
     }
 
     h6 {
@@ -166,13 +154,6 @@
         .project-name-section {
             background-color: $dark-card-project;
         }
-        // button {
-        //     color: $dark-text-color;
-        //     background-color: $dark-card-description;
-        // }
-        // svg {
-        //     filter: $dark-text-filter;
-        // }
         h6, p {
             color: $dark-text-color;
         }

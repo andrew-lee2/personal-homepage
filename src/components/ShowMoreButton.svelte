@@ -9,9 +9,8 @@
     }
 </script>
 
-<div class="show-more-button">
+<div>
     <button
-        class="temp"
         on:click={handleClick}
     >
         {#if showClicked}
@@ -30,13 +29,13 @@
 <style type="text/scss">
     @import '../styles/vars';
 
-    .show-more-button {
+    div {
         display: flex;
         align-items: center;
         margin-bottom: 0.25em;
     }
 
-    .temp {
+    button {
         border: none;
         background-color: $primary-sidebar-background;
         font-size: 0.67em;
