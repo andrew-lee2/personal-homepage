@@ -2,6 +2,7 @@
     import { onMount } from 'svelte';
     import ExpandArrow from '../components/ExpandArrow.svelte';
     import CollapseArrow from '../components/CollapseArrow.svelte';
+    import ShowMoreButton from '../components/ShowMoreButton.svelte';
     let description: any;
     let showClicked: boolean = false;
     let displayShowMore: boolean = true;
@@ -20,10 +21,6 @@
         // TODO can we make this more dynamic with the length of what needs to be exposed
         displayShowMore = (description.scrollHeight > description.clientHeight || showClicked);
     })
-
-    function handleClick(): void {
-        showClicked = !showClicked;
-    }
 </script>
 
 <div class="project-card" class:clicked="{showClicked === true}">
@@ -43,25 +40,8 @@
         <p bind:this={description} class:para-clicked="{showClicked === true}" class="description">
             {projectDetails.description}
         </p>
-        <!-- TODO make this a component -->
         {#if displayShowMore}
-            <div class="show-more-button">
-                <button
-                    on:click={handleClick}
-                >
-                    {#if showClicked}
-                        Show Less
-                    {:else}
-                        Show More
-                    {/if}
-                </button>
-                {#if showClicked}
-                    <CollapseArrow/>
-                {:else}
-                    <ExpandArrow/>
-                {/if}
-            </div>
-            
+            <ShowMoreButton bind:showClicked></ShowMoreButton>
         {/if}
         <div class="tag-container">
             <!-- TODO make this a component -->
@@ -75,32 +55,12 @@
 <style type="text/scss">
     @import '../styles/vars';
 
-    .show-more-button {
-        display: flex;
-        align-items: center;
-        margin-bottom: 0.25em;
-    }
-    svg line {
-		stroke: $primary-text-color;
-		stroke-width: 2;
-		transition: $standard-transition;
-		color: $primary-text-color;
-	}
-
-    button {
-        border: none;
-        background-color: $primary-sidebar-background;
-        font-size: 0.67em;
-        font-weight: 600;
-        text-align: left;
-        padding-left: 0;
-        cursor: pointer;
-        display: flex;
-        align-items: baseline;
-        margin: 0;
-    }
-
-
+    // svg line {
+	// 	stroke: $primary-text-color;
+	// 	stroke-width: 2;
+	// 	transition: $standard-transition;
+	// 	color: $primary-text-color;
+	// }
     .tag-container {
         display: block;
     }
@@ -224,14 +184,11 @@
             color: $dark-text-color;
             background-color: $dark-card-description;
         }
-        svg {
-            filter: $dark-text-filter;
-        }
+        // svg {
+        //     filter: $dark-text-filter;
+        // }
         h6, p {
             color: $dark-text-color;
         }
-        
-
-
     }
 </style>
