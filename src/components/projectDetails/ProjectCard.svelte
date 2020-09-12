@@ -1,8 +1,9 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import ShowMoreButton from '../components/ShowMoreButton.svelte';
-    import TechTag from '../components/TechTag.svelte';
-    import type { ProjectDetails } from '../common/types';
+    import ShowMoreButton from './ShowMoreButton.svelte';
+    import TechTag from './TechTag.svelte';
+    import ProjectHeader from './ProjectHeader.svelte';
+    import type { ProjectDetails } from '../../common/types';
     let description: any;
     let showClicked: boolean = false;
     let displayShowMore: boolean = true;
@@ -16,15 +17,7 @@
 </script>
 
 <div class="project-card" class:clicked="{showClicked === true}">
-    <!-- TODO make this a component? -->
-    <div class="project-name-section">
-        <h6 class="project-header">Project</h6>
-        <div class="title-link-container">
-            <h2 class="project-name">{projectDetails.name}</h2>
-            <!-- svelte-ignore a11y-missing-content -->
-            <a class="icon-github" href="{projectDetails.URL}" target="_blank"></a>
-        </div>
-    </div>
+    <ProjectHeader projectDetails={projectDetails}/>
     <div class="project-details">
         <h6 class="description-header">Description</h6>
         <p bind:this={description} class:para-clicked="{showClicked === true}" class="description">
@@ -42,7 +35,7 @@
 </div>
 
 <style type="text/scss">
-    @import '../styles/vars';
+    @import '../../styles/vars';
 
     .tag-container {
         display: block;
@@ -52,45 +45,10 @@
         margin-top: 0;
         margin-bottom: .5rem;
         color: $primary-text-color;
-        &.project-header {
-            color: $dark-text-color;
-        }
-    }
-
-    h2 {
-        margin-top: 0;
-        margin-bottom: 0;
-        color: $dark-text-color;
     }
 
     p {
         margin: 0;
-    }
-
-    .title-link-container {
-        display: flex;
-        align-items: flex-end;
-        @media screen and (min-width: $small){
-            flex-direction: column;
-            align-items: flex-start;
-            height: 100%;
-        }
-    }
-
-    .icon-github {
-        width: 25px;
-        height: 25px;
-        filter: $dark-text-filter;
-        // TODO something wierd going on
-        z-index: 0;
-        background-image: url(../static/images/github.svg);
-        &:hover {
-            filter: $dark-text-hover-filter;
-        }
-
-        @media screen and (min-width: $small) {
-            margin-top: auto;
-        }
     }
 
     .clicked {
@@ -123,19 +81,6 @@
         }
     }
 
-    .project-name-section {
-        border-radius: 10px 10px 0 0;
-        display: flex;
-        flex-direction: column;
-        background-color: $primary-highlight;
-        padding: 1rem;
-        
-        @media screen and (min-width: $small) {
-            min-width: 150px;
-            border-radius: 10px 0 0 10px;
-        }
-    }
-
     .project-details {
         display: flex;
         flex-direction: column;
@@ -150,9 +95,6 @@
     :global(body.dark-mode) {
         .project-details {
             background-color: $dark-card-description;
-        }
-        .project-name-section {
-            background-color: $dark-card-project;
         }
         h6, p {
             color: $dark-text-color;

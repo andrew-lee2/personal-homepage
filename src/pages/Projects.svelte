@@ -1,5 +1,5 @@
 <script lang="ts">
-    import ProjectCard from '../components/ProjectCard.svelte';
+    import ProjectCard from '../components/projectDetails/ProjectCard.svelte';
     import SocialLinks from '../components/SocialLinks.svelte';
     import type { ProjectDetails } from '../common/types';
 

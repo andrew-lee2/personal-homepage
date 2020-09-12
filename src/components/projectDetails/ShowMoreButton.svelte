@@ -1,6 +1,6 @@
 <script lang="ts">
-    import ExpandArrow from '../components/ExpandArrow.svelte';
-    import CollapseArrow from '../components/CollapseArrow.svelte';
+    import ExpandArrow from './ExpandArrow.svelte';
+    import CollapseArrow from './CollapseArrow.svelte';
 
     export let showClicked: boolean = false;
     
@@ -27,7 +27,7 @@
 </div>
 
 <style type="text/scss">
-    @import '../styles/vars';
+    @import '../../styles/vars';
 
     div {
         display: flex;

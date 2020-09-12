@@ -6,7 +6,7 @@
 <span class="tech-tag">{tag}</span>
 
 <style type="text/scss">
-    @import '../styles/vars';
+    @import '../../styles/vars';
 
     .tech-tag {
         border-radius: 9999px;

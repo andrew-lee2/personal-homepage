@@ -5,7 +5,7 @@
 </svg>
 
 <style type="text/scss">
-    @import '../styles/vars';
+    @import '../../styles/vars';
 
     svg {
         filter: $primary-text-filter; 
