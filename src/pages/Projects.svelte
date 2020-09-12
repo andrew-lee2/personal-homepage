@@ -1,13 +1,10 @@
 <script lang="ts">
-    // import type { each } from 'svelte/internal';
     import ProjectCard from '../components/ProjectCard.svelte';
     import SocialLinks from '../components/SocialLinks.svelte';
-    import {ProjectDetails} from '../common/types';
+    import type { ProjectDetails } from '../common/types';
 
     // https://github.com/EmilTholin/svelte-routing/issues/122
     export let location: any;
-
-    // TODO should we split this out into its own file? 
 
     let allProjects: ProjectDetails[] = [
         {

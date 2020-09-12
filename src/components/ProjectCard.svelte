@@ -1,19 +1,10 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import ExpandArrow from '../components/ExpandArrow.svelte';
-    import CollapseArrow from '../components/CollapseArrow.svelte';
     import ShowMoreButton from '../components/ShowMoreButton.svelte';
+    import type { ProjectDetails } from '../common/types';
     let description: any;
     let showClicked: boolean = false;
     let displayShowMore: boolean = true;
-
-    // TODO centralize interface
-    interface ProjectDetails {
-        name: string;
-        URL: string;
-        description: string;
-        tags: string[];
-    }
 
     export let projectDetails: ProjectDetails;
 
@@ -55,12 +46,6 @@
 <style type="text/scss">
     @import '../styles/vars';
 
-    // svg line {
-	// 	stroke: $primary-text-color;
-	// 	stroke-width: 2;
-	// 	transition: $standard-transition;
-	// 	color: $primary-text-color;
-	// }
     .tag-container {
         display: block;
     }

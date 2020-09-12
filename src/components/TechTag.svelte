@@ -1,0 +1,20 @@
+<script lang="ts">
+    export let tag: string;
+</script>
+
+
+<span class="tech-tag">{tag}</span>
+
+<style type="text/scss">
+    @import '../styles/vars';
+
+    .tech-tag {
+        border-radius: 9999px;
+        background-color: $primary-base;
+        font-weight: 600;
+        padding: 0.5rem 4% 0.5rem 4%;
+        display: inline-block;
+        margin-right: 0.5rem;
+    }
+    
+</style>
