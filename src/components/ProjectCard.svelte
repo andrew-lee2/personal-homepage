@@ -51,8 +51,9 @@
     }
 
     .tech-tag {
-        border-radius: 9999px;
+        border-radius: 9 999px;
         background-color: $primary-base;
+        // background-color: red;
         font-weight: 600;
         padding: 0.5rem 4% 0.5rem 4%;
         display: inline-block;
@@ -165,10 +166,10 @@
         .project-name-section {
             background-color: $dark-card-project;
         }
-        button {
-            color: $dark-text-color;
-            background-color: $dark-card-description;
-        }
+        // button {
+        //     color: $dark-text-color;
+        //     background-color: $dark-card-description;
+        // }
         // svg {
         //     filter: $dark-text-filter;
         // }
