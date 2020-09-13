@@ -39,6 +39,7 @@
     @import '../../styles/vars';
 
     .tag-container {
+        margin-top: 0.5rem;
         display: block;
     }
 
@@ -56,7 +57,7 @@
     .clicked {
         min-height: 350px !important;
         @media screen and (min-width: $small) {
-            min-height: 255px !important;
+            min-height: 210px !important;
         }
     }
 
@@ -86,9 +87,10 @@
     .project-details {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         border-radius: 0 0 10px 10px;
         background-color: $primary-sidebar-background;
-        padding: 1rem;
+        padding: 1rem 1rem 0.5rem 1rem;
         @media screen and (min-width: $small) {
             border-radius: 0 10px 10px 0;
         }

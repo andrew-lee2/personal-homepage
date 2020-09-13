@@ -16,8 +16,8 @@
         {
             name: "Standup Tracker", 
             URL: "https://github.com/andrew-lee2/standup", 
-            description: "Google Home integration which writes to database and metrics are displayed with React graphs", 
-            tags: ["Javascript", "React", "Google Home"], 
+            description: "Google Home integration which writes to database and metrics are displayed with React graphs asdasdasdasdasdasdasdnasldhjasldhasdhas", 
+            tags: ["Javascript", "React", "Google Home", "Test tag 2", "Test tag 3"], 
         },
     ]
     

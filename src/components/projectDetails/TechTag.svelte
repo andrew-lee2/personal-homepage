@@ -12,9 +12,11 @@
         border-radius: 9999px;
         background-color: $primary-base;
         font-weight: 600;
-        padding: 0.5rem 4% 0.5rem 4%;
+        font-size: 12px;
+        padding: 0.35rem 4% 0.35rem 4%;
         display: inline-block;
         margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
     }
     
 </style>
