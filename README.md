@@ -30,6 +30,8 @@ npm install
 might have to run this...
 https://stackoverflow.com/questions/48147896/error-in-cannot-find-module-node-sass
 
+sudo npm install --save-dev  --unsafe-perm node-sass
+
 ```bash
 npm run dev
 ```

@@ -1,21 +1,33 @@
 <script lang="ts">
-    import ProjectCard from '../components/ProjectCard.svelte';
+    import ProjectCard from '../components/projectDetails/ProjectCard.svelte';
     import SocialLinks from '../components/SocialLinks.svelte';
+    import type { ProjectDetails } from '../common/types';
+
     // https://github.com/EmilTholin/svelte-routing/issues/122
     export let location: any;
 
-    
+    let allProjects: ProjectDetails[] = [
+        {
+            name: "Resveration Framework", 
+            URL: "https://https://github.com/andrew-lee2/personal-homepage", 
+            description: "Code for the website you are currently on!", 
+            tags: ["TypeScript", "Svelte"], 
+        },
+        {
+            name: "Standup Tracker", 
+            URL: "https://github.com/andrew-lee2/standup", 
+            description: "Google Home integration which writes to database and metrics are displayed with React graphs", 
+            tags: ["Javascript", "React", "Google Home"], 
+        },
+    ]
     
 </script>
 
 <main>
     <div class="container">
-        <ProjectCard/>
-        <ProjectCard/>
-        <ProjectCard/>
-        <ProjectCard/>
-        <ProjectCard/>
-        <ProjectCard/>
+        {#each allProjects as project}
+            <ProjectCard projectDetails={project}/>
+        {/each}
         <div class="footer">
             <SocialLinks></SocialLinks>
         </div>
