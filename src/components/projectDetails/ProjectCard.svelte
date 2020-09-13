@@ -7,11 +7,12 @@
     let description: any;
     let showClicked: boolean = false;
     let displayShowMore: boolean = true;
+    let expandHeight:string = '400px';
 
     export let projectDetails: ProjectDetails;
-
+    
     onMount(() => {
-        // TODO can we make this more dynamic with the length of what needs to be exposed
+        expandHeight = `{description.scrollHeight + 5}px`
         displayShowMore = (description.scrollHeight > description.clientHeight || showClicked);
     })
 </script>
@@ -20,7 +21,7 @@
     <ProjectHeader projectDetails={projectDetails}/>
     <div class="project-details">
         <h6 class="description-header">Description</h6>
-        <p bind:this={description} class:para-clicked="{showClicked === true}" class="description">
+        <p bind:this={description} class:para-clicked="{showClicked === true}" style="--expand-height: {expandHeight}" class="description">
             {projectDetails.description}
         </p>
         {#if displayShowMore}
@@ -38,6 +39,7 @@
     @import '../../styles/vars';
 
     .tag-container {
+        margin-top: 0.5rem;
         display: block;
     }
 
@@ -51,15 +53,16 @@
         margin: 0;
     }
 
+    // TODO this isnt an issue now but can make it more dynamic like below
     .clicked {
-        height: 350px !important;
+        min-height: 350px !important;
         @media screen and (min-width: $small) {
-            height: 255px !important;
+            min-height: 210px !important;
         }
     }
 
     .para-clicked {
-        height: 145px !important;
+        height: var(--expand-height) !important;
     }
 
     .description {
@@ -71,7 +74,8 @@
     }
 
     .project-card {
-        margin: 1rem 1rem 0 1rem;
+        width: 90%;
+        margin-top: 1rem;
         display: flex;
         flex-direction: column;
         @media screen and (min-width: $small) {
@@ -84,9 +88,10 @@
     .project-details {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         border-radius: 0 0 10px 10px;
         background-color: $primary-sidebar-background;
-        padding: 1rem;
+        padding: 1rem 1rem 0.5rem 1rem;
         @media screen and (min-width: $small) {
             border-radius: 0 10px 10px 0;
         }

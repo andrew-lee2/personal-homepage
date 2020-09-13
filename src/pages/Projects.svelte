@@ -16,8 +16,8 @@
         {
             name: "Standup Tracker", 
             URL: "https://github.com/andrew-lee2/standup", 
-            description: "Google Home integration which writes to database and metrics are displayed with React graphs", 
-            tags: ["Javascript", "React", "Google Home"], 
+            description: "Google Home integration which writes to database and metrics are displayed with React graphs asdasdasdasdasdasdasdnasldhjasldhasdhas", 
+            tags: ["Javascript", "React", "Google Home", "Test tag 2", "Test tag 3"], 
         },
     ]
     
@@ -32,7 +32,6 @@
             <SocialLinks></SocialLinks>
         </div>
     </div>
-    
 </main>
 
 <style type="text/scss">
@@ -44,9 +43,9 @@
     .container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        align-items: center;
         flex-direction: column;
-        width:100%;
+        width: 100%;
         margin: 3rem auto 0 auto;
 
         @media screen and (min-width: $small){

@@ -23,7 +23,6 @@
         padding: 1rem;
         
         @media screen and (min-width: $small) {
-            min-width: 150px;
             border-radius: 10px 0 0 10px;
         }
     }
@@ -32,8 +31,6 @@
         width: 25px;
         height: 25px;
         filter: $dark-text-filter;
-        // TODO something wierd going on
-        z-index: 0;
         background-image: url(../static/images/github.svg);
         &:hover {
             filter: $dark-text-hover-filter;
@@ -59,7 +56,9 @@
     .title-link-container {
         display: flex;
         align-items: flex-end;
+        justify-content: space-between;
         @media screen and (min-width: $small){
+            width: 150px;
             flex-direction: column;
             align-items: flex-start;
             height: 100%;

@@ -20,4 +20,8 @@
     .display-front {
         z-index: 20;
     }
+
+	.hamburger-container {
+		width: 3.5rem;
+	}
 </style>
