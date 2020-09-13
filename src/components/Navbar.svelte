@@ -33,6 +33,7 @@
 
     .flex {
         display: flex;
+        align-items: center;
     }
 
     :global(body.dark-mode)  {

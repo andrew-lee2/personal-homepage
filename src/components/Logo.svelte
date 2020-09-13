@@ -14,6 +14,7 @@
 		display: flex;
 		align-items: center;
 		z-index: 30;
+		height: 100%;
 	}
 
 	:global(body.dark-mode)  {

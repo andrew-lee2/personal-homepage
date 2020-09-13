@@ -11,7 +11,7 @@
 
 <svelte:window on:keydown={handleKeydown}/>
 
-<Hoverable class="display-front" let:hovering={hovered}>
+<Hoverable class="display-front hamburger-container" let:hovering={hovered}>
 	<button class="hamburger" class:open class:hovered on:click={() => open = !open}>
 		<svg width=24 height=24>
 			<line id="left-a" class:hovered x1=12 y1=2 x2=4 y2=22/>
@@ -23,8 +23,7 @@
 
 
 <style type="text/scss">
-	@import '../styles/vars';
-	
+	@import '../styles/vars';	
 	.hamburger {
         color: $primary-text-color;
         cursor: pointer;
@@ -64,7 +63,7 @@
 	}
 	
 	.open {
-		border: none;
+		border-style: hidden;
 		transition: $standard-transition;
 
 		#left-a {
@@ -91,9 +90,11 @@
 		& svg line {
 			color: $dark-text-color;
 		}
-		& .hovered {
-			color: $dark-text-hover-color;
-			border-color: $dark-text-hover-color;
+		@media screen and (min-width: $small){
+			& .hovered {
+				color: $dark-text-hover-color;
+				border-color: $dark-text-hover-color;
+			}
 		}
     }
 </style>
