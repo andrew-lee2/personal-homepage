@@ -7,11 +7,12 @@
     let description: any;
     let showClicked: boolean = false;
     let displayShowMore: boolean = true;
+    let expandHeight:string = '400px';
 
     export let projectDetails: ProjectDetails;
-
+    
     onMount(() => {
-        // TODO can we make this more dynamic with the length of what needs to be exposed
+        expandHeight = `{description.scrollHeight + 5}px`
         displayShowMore = (description.scrollHeight > description.clientHeight || showClicked);
     })
 </script>
@@ -20,7 +21,7 @@
     <ProjectHeader projectDetails={projectDetails}/>
     <div class="project-details">
         <h6 class="description-header">Description</h6>
-        <p bind:this={description} class:para-clicked="{showClicked === true}" class="description">
+        <p bind:this={description} class:para-clicked="{showClicked === true}" style="--expand-height: {expandHeight}" class="description">
             {projectDetails.description}
         </p>
         {#if displayShowMore}
@@ -51,15 +52,16 @@
         margin: 0;
     }
 
+    // TODO this isnt an issue now but can make it more dynamic like below
     .clicked {
-        height: 350px !important;
+        min-height: 350px !important;
         @media screen and (min-width: $small) {
-            height: 255px !important;
+            min-height: 255px !important;
         }
     }
 
     .para-clicked {
-        height: 145px !important;
+        height: var(--expand-height) !important;
     }
 
     .description {
