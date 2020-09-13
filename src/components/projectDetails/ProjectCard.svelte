@@ -74,7 +74,8 @@
     }
 
     .project-card {
-        margin: 1rem 1rem 0 1rem;
+        width: 90%;
+        margin-top: 1rem;
         display: flex;
         flex-direction: column;
         @media screen and (min-width: $small) {

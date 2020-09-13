@@ -27,6 +27,7 @@
 	@import './styles/vars';
     .fix-navbar {
         position: fixed;
+        // width: 100vh;
         width: 100%;
 		z-index: 100;
     }
