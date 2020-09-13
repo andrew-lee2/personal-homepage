@@ -28,6 +28,7 @@
     .fix-navbar {
         position: fixed;
         width: 100%;
+		z-index: 100;
     }
 	:global(body) {
 		padding: 0;

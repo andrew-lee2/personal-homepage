@@ -56,9 +56,11 @@
 		color: $primary-text-color;
 	}
 
-	.hovered {
-		color: $primary-text-hover-color;
-		border-color: $primary-text-hover-color;
+	@media screen and (min-width: $small){
+		.hovered {
+			color: $primary-text-hover-color;
+			border-color: $primary-text-hover-color;
+		}
 	}
 	
 	.open {
