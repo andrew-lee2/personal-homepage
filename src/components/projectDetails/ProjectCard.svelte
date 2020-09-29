@@ -8,27 +8,29 @@
     let showClicked: boolean = false;
     let displayShowMore: boolean = true;
     let expandHeight:string = '400px';
+    let totalExpandHeight: string = '';
 
-    export let projectDetails: ProjectDetails;
+    export let projectDetailInfo: ProjectDetails;
     
     onMount(() => {
-        expandHeight = `{description.scrollHeight + 5}px`
+        expandHeight = `{description.scrollHeight + 5}px`;
+        totalExpandHeight = `{description.scrollHeight + 25}px`;
         displayShowMore = (description.scrollHeight > description.clientHeight || showClicked);
     })
 </script>
 
-<div class="project-card" class:clicked="{showClicked === true}">
-    <ProjectHeader projectDetails={projectDetails}/>
+<div class="project-card" class:clicked="{showClicked === true}" style="--total-expand-height: {totalExpandHeight}">
+    <ProjectHeader projectDetails={projectDetailInfo}/>
     <div class="project-details">
         <h6 class="description-header">Description</h6>
         <p bind:this={description} class:para-clicked="{showClicked === true}" style="--expand-height: {expandHeight}" class="description">
-            {projectDetails.description}
+            {projectDetailInfo.description}
         </p>
         {#if displayShowMore}
             <ShowMoreButton bind:showClicked/>
         {/if}
         <div class="tag-container">
-            {#each projectDetails.tags as tag}
+            {#each projectDetailInfo.tags as tag}
                 <TechTag tag={tag}/>
             {/each}
         </div>
@@ -53,11 +55,9 @@
         margin: 0;
     }
 
-    // TODO this isnt an issue now but can make it more dynamic like below
     .clicked {
-        min-height: 350px !important;
         @media screen and (min-width: $small) {
-            min-height: 210px !important;
+            height: var(--total-expand-height) !important;
         }
     }
 

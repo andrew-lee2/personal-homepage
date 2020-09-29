@@ -1,32 +1,17 @@
 <script lang="ts">
     import ProjectCard from '../components/projectDetails/ProjectCard.svelte';
     import SocialLinks from '../components/SocialLinks.svelte';
-    import type { ProjectDetails } from '../common/types';
+    import { allProjects } from '../components/projectDetails/projectInfo';
 
     // https://github.com/EmilTholin/svelte-routing/issues/122
     export let location: any;
-
-    let allProjects: ProjectDetails[] = [
-        {
-            name: "Resveration Framework", 
-            URL: "https://https://github.com/andrew-lee2/personal-homepage", 
-            description: "Code for the website you are currently on!", 
-            tags: ["TypeScript", "Svelte"], 
-        },
-        {
-            name: "Standup Tracker", 
-            URL: "https://github.com/andrew-lee2/standup", 
-            description: "Google Home integration which writes to database and metrics are displayed with React graphs asdasdasdasdasdasdasdnasldhjasldhasdhas", 
-            tags: ["Javascript", "React", "Google Home", "Test tag 2", "Test tag 3"], 
-        },
-    ]
     
 </script>
 
 <main>
     <div class="container">
         {#each allProjects as project}
-            <ProjectCard projectDetails={project}/>
+            <ProjectCard projectDetailInfo={project}/>
         {/each}
         <div class="footer">
             <SocialLinks></SocialLinks>
@@ -49,7 +34,7 @@
         margin: 3rem auto 0 auto;
 
         @media screen and (min-width: $small){
-            width: 30%;
+            width: 35%;
             margin: 6rem auto 0 auto;
         }
     }
