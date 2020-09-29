@@ -9,7 +9,7 @@
     let displayShowMore: boolean = true;
     let expandHeight:string = '400px';
 
-    export let projectDetails: ProjectDetails;
+    export let projectDetailInfo: ProjectDetails;
     
     onMount(() => {
         expandHeight = `{description.scrollHeight + 5}px`
@@ -18,17 +18,17 @@
 </script>
 
 <div class="project-card" class:clicked="{showClicked === true}">
-    <ProjectHeader projectDetails={projectDetails}/>
+    <ProjectHeader projectDetails={projectDetailInfo}/>
     <div class="project-details">
         <h6 class="description-header">Description</h6>
         <p bind:this={description} class:para-clicked="{showClicked === true}" style="--expand-height: {expandHeight}" class="description">
-            {projectDetails.description}
+            {projectDetailInfo.description}
         </p>
         {#if displayShowMore}
             <ShowMoreButton bind:showClicked/>
         {/if}
         <div class="tag-container">
-            {#each projectDetails.tags as tag}
+            {#each projectDetailInfo.tags as tag}
                 <TechTag tag={tag}/>
             {/each}
         </div>
