@@ -1,21 +1,47 @@
 <script lang="ts">
     import { Router, link } from "svelte-routing";
-    import {getContext} from 'svelte';
-	import {ROUTER} from 'svelte-routing/src/contexts';
+    import { getContext } from 'svelte';
+	import { ROUTER } from 'svelte-routing/src/contexts';
+    import { sidebarOpen } from '../store.js';
     const { activeRoute } = getContext(ROUTER);
     
     let route: string = '';
-    export let open: boolean = false;
 
-	$: {
+    $: {
         if ($activeRoute !== null) {
             route = $activeRoute.uri;
         }
-     }
+    }
+
+    function clickOutside(node, onEventFunction) {
+        const handleClick = event => {
+            var path = event.composedPath();
+
+            if (!path.includes(node)) {
+                onEventFunction();
+            }
+        }
+
+        document.addEventListener("click", handleClick);
+
+        return {
+            destroy() {
+                document.removeEventListener("click", handleClick);
+            }
+        }
+    }
+
+    function handleClickOutside(event: any) {
+        // TODO need to implement this
+    }
+
+    $: if (route) {
+        sidebarOpen.update(existing => false);
+    }
 
 </script>
 
-<aside class="sidebar-container" class:open>
+<aside class="sidebar-container" class:open="{$sidebarOpen === true}" use:clickOutside={handleClickOutside}>
 	<nav class="sidebar-nav">
         <Router>
             <ul>
@@ -39,7 +65,7 @@
 
     .sidebar-container {
         position: absolute;
-        width: 60%;
+        width: 100%;
         height: 100vh;
         background-color: $primary-sidebar-background;
         border-right-width: 2px;

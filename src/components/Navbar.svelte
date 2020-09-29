@@ -3,13 +3,11 @@
 	import Hamburger from '../components/Hamburger.svelte';
     import NavbarMenu from '../components/NavbarMenu.svelte';
     import ToggleSwitch from '../components/ToggleSwitch.svelte';
-	
-    export let sidebar: Boolean = false;
 </script>
 
 <header class="flex navbar-header">
 	<nav class="flex">
-		<Hamburger bind:open={sidebar}/>
+		<Hamburger/>
 		<Logo/>	
 	</nav>
 	

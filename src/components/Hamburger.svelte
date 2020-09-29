@@ -1,18 +1,24 @@
 <script>
 	import Hoverable from '../utils/Hoverable.svelte';
-	export let open = false;
+	import { sidebarOpen } from '../store.js';
+	import { get } from 'svelte/store';
 
 	function handleKeydown(event) {
 		if (event.key === "Escape") {
-			open = false;
+			sidebarOpen.update(existing => false);
 		}
 	}
+
+	function handleClick(event) {
+		sidebarOpen.update(existing => !get(sidebarOpen));
+	}
+
 </script>
 
 <svelte:window on:keydown={handleKeydown}/>
 
 <Hoverable class="display-front hamburger-container" let:hovering={hovered}>
-	<button class="hamburger" class:open class:hovered on:click={() => open = !open}>
+	<button class="hamburger" class:open="{$sidebarOpen === true}" class:hovered on:click={handleClick}>
 		<svg width=24 height=24>
 			<line id="left-a" class:hovered x1=12 y1=2 x2=4 y2=22/>
 			<line id="middle-slash" class:hovered x1=7 y1=15 x2=17 y2=15/>
