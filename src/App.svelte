@@ -7,13 +7,13 @@
 	import Sidebar from './components/Sidebar.svelte';
 
 	export let url: string = "";
-	let open: boolean = false;
+
 </script>
 
 <Router url="{url}">
 	<div class="fix-navbar">
-		<Sidebar bind:open/>
-		<Navbar bind:sidebar={open}/>
+		<Sidebar/>
+		<Navbar/>
 	</div>
 	
 	<div>
@@ -27,7 +27,6 @@
 	@import './styles/vars';
     .fix-navbar {
         position: fixed;
-        // width: 100vh;
         width: 100%;
 		z-index: 100;
     }
