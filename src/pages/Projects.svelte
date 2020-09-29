@@ -34,7 +34,7 @@
         margin: 3rem auto 0 auto;
 
         @media screen and (min-width: $small){
-            width: 30%;
+            width: 35%;
             margin: 6rem auto 0 auto;
         }
     }
