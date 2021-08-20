@@ -41,9 +41,13 @@
         }
     }
     .profile-pic-container {
+        min-height: 18rem;
         margin: 1rem 0;
         display: flex;
         justify-content: center;
+        @media screen and (min-width: $small) {
+            min-height: 32rem;
+        }
     }
     img {
         max-width: 100%;
