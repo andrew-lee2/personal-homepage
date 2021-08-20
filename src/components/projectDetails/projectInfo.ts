@@ -5,7 +5,7 @@ export let allProjects: ProjectDetails[] = [
     {
         name: "Personal Website", 
         URL: "https://https://github.com/andrew-lee2/personal-homepage", 
-        description: "My personal website. You are currently on the site!", 
+        description: "The site you are currently visiting!",
         tags: ["TypeScript", "Svelte"], 
     },
     {
